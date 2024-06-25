@@ -1,6 +1,7 @@
 import { BrowserRouter,Route, Routes } from "react-router-dom"
 import Footer from "./shared/footer/Footer"
 import Header from "./shared/header/Header"
+import Login from "./pages/Login"
 
 
 function App() {
@@ -8,9 +9,9 @@ function App() {
  
   return (
     <BrowserRouter>
-    <Header/>
+     <Header/>
     <Routes>
-      <Route path="/" element={"pagina coloca aqui"}></Route>
+      <Route path="/" element={<Login/>}></Route>
     </Routes>
     <Footer/>
     </BrowserRouter>
