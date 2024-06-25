@@ -15,7 +15,7 @@ export const apiRequest = (method:string, url:string) =>{
 
 
 export const apiImageUrl = (imageUrl:string) =>{
-const image = `https://image.tmdb.org/t/p/original/${imageUrl}`
+const image = `https://image.tmdb.org/t/p/original${imageUrl}`
 
 return image
 

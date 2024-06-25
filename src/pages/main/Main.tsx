@@ -30,7 +30,7 @@ const Main = () => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         if (response) {
           setMovie({
             poster_path: response.data.backdrop_path,
@@ -95,11 +95,11 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className="">
+      <div className=" bg-neutral-600">
         <Home />
-        <Movie />
+        {/* <Movie />
         <Serie />
-        <Celebrity />
+        <Celebrity /> */}
       </div>
     </div>
   );
