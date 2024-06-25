@@ -9,11 +9,11 @@ function App() {
  
   return (
     <BrowserRouter>
-     <Header/>
+     {/* <Header/> */}
     <Routes>
       <Route path="/" element={<Login/>}></Route>
     </Routes>
-    <Footer/>
+    {/* <Footer/> */}
     </BrowserRouter>
   )
 }
