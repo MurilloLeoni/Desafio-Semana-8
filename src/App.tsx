@@ -1,6 +1,7 @@
-import { BrowserRouter,Route, Routes } from "react-router-dom"
+import { BrowserRouter,Route, Routes} from "react-router-dom"
 import Footer from "./shared/footer/Footer"
-import Header from "./shared/header/Header"
+
+import Main from "./pages/main/Main"
 
 
 function App() {
@@ -8,10 +9,11 @@ function App() {
  
   return (
     <BrowserRouter>
-    <Header/>
     <Routes>
-      <Route path="/" element={"pagina coloca aqui"}></Route>
+
+      <Route path="/" element={<Main/>}></Route>
     </Routes>
+    
     <Footer/>
     </BrowserRouter>
   )
