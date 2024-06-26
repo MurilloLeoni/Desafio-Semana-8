@@ -2,47 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-.h1-heading{
-@apply font-montserrat font-bold text-[44px]
+.h1-heading {
+  @apply font-montserrat font-bold text-[44px];
 }
 
-.h2-heading{
-    @apply font-montserrat font-bold text-[32px]
+.h2-heading {
+  @apply font-montserrat font-bold text-[32px];
 }
 
-.h3-heading{
-    @apply font-montserrat font-bold text-[24px]
+.h3-heading {
+  @apply font-montserrat font-bold text-[24px];
 }
 
-.h4-heading{
-    @apply font-montserrat font-bold text-[20px]
+.h4-heading {
+  @apply font-montserrat font-bold text-[20px];
 }
 
-.body-large{
-    @apply font-montserrat font-normal text-[20px]
+.body-large {
+  @apply font-montserrat font-normal text-[20px];
 }
 
-.body-review{
-    @apply font-montserrat font-normal text-[16px]
+.body-review {
+  @apply font-montserrat font-normal text-[16px];
 }
 
-.body-small{
-    @apply  font-montserrat font-normal text-[14px]
+.body-small {
+  @apply font-montserrat font-normal text-[14px];
 }
 
-.caption{
-    @apply font-montserrat font-normal text-[12px]
+.caption {
+  @apply font-montserrat font-normal text-[12px];
 }
 
-.button-text{
-    @apply font-montserrat font-bold text-[16px]
+.button-text {
+  @apply font-montserrat font-bold text-[16px];
 }
 
-.image-bg-container{
-   background: linear-gradient(179.79deg, rgba(26, 29, 41, 0) 15.81%, rgba(26, 29, 41, 0.791667) 64.73%, #1A1D29 97.83%);
+.image-bg-container {
+  background: linear-gradient(
+    179.79deg,
+    rgba(26, 29, 41, 0) 15.81%,
+    rgba(26, 29, 41, 0.791667) 64.73%,
+    #1a1d29 97.83%
+  );
 }
-
-
-
-
-

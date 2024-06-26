@@ -6,7 +6,8 @@ import Movie from "./movie-component/Movie";
 import Serie from "./serie-component/Serie";
 import Header from "../../shared/header/Header";
 import Celebrity from "./celebrity-component/Celebrity";
-import ButtonClicked from "../../components/ButtonClicked";
+import ButtonClicked from "../../components/Buttons/ButtonClicked";
+import {Route, Routes} from "react-router-dom"
 
 interface requisicao {
   poster_path: string;
@@ -98,10 +99,21 @@ const Main = () => {
         </div>
       </div>
       <div className=" bg-neutral-600">
-        <Home />
-        {/* <Movie />
-        <Serie />
-        <Celebrity /> */}
+      
+    
+    
+    <Routes>
+        {/* <Route path="" element={<NotFound />}/> */}
+        {/* <Route path="not" element={<NotFound2 />}/> */}
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/movie" element={<Movie />}></Route>
+        <Route path="/serie" element={<Serie />}></Route>
+        <Route path="/celebrity" element={<Celebrity /> }></Route>
+    </Routes>
+    
+   
+    
+        
       </div>
     </div>
   );

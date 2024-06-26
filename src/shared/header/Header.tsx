@@ -11,7 +11,7 @@ import IconStar from "../../components/icons/IconStar";
 
 
 
-type Props = {};
+// type Props = {};
 
 const Header = () => {
 	React.useEffect(() => {
@@ -20,14 +20,14 @@ const Header = () => {
 
 	// esta função é chamada para mudar a cor do texto da navegação quando a rota é ativa
 	const linkStyle = ({ isActive }: { isActive: boolean }) =>
-		`p-4 text-white inline-flex gap-2 body-review ${isActive ? "text-cyan-400" : ""
+		`p-4 text-white inline-flex gap-2 body-review ${isActive ? "text-[#02E7F5]" : ""
 		}`;
 
 	const searchStyle = `sm:p-4 p-2  text-white inline-flex gap-2 body-review`;
 
 	// esta função é chamada para mudar a cor do ícone quando a rota é ativa
 	const iconStyle = ({ isActive }: { isActive: boolean }) =>
-		`fill-white ${isActive ? "fill-cyan-400" : ""}`;
+		`fill-white ${isActive ? "fill-[#02E7F5]" : ""}`;
 
 	return (
 		<header className="w-full xl:h-[100.46px]  sm:px-8 py-4 bg-gradient-to-b from-neutral-950 to-neutral-0 justify-between items-center inline-flex">
@@ -48,7 +48,7 @@ const Header = () => {
 									</>
 								)}
 							</NavLink>
-							<NavLink to="not" className={linkStyle}>
+							<NavLink to="serie" className={linkStyle}>
 								{({ isActive }) => (
 									<>
 										<IconTv className={iconStyle({ isActive })} />
@@ -56,7 +56,7 @@ const Header = () => {
 									</>
 								)}
 							</NavLink>
-							<NavLink to="not" className={linkStyle}>
+							<NavLink to="movie" className={linkStyle}>
 								{({ isActive }) => (
 									<>
 										<IconMovie className={iconStyle({ isActive })} />
@@ -64,7 +64,7 @@ const Header = () => {
 									</>
 								)}
 							</NavLink>
-							<NavLink to="not" className={linkStyle}>
+							<NavLink to="celebrity" className={linkStyle}>
 								{({ isActive }) => (
 									<>
 										<IconStar className={iconStyle({ isActive })} />
