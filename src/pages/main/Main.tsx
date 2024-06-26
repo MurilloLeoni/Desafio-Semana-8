@@ -53,6 +53,7 @@ const Main = () => {
         className={" bg-no-repeat  bg-cover flex flex-col justify-between"}
         style={{ backgroundImage: `url(${imgUrl})` }}
       >
+        <div className="image-bg-container">        
         <Header />
         <div className=" flex flex-col py-40 px-4">
           <div className="flex flex-col ml-20 gap-5 max-w-[719px]">
@@ -93,6 +94,7 @@ const Main = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
       <div className=" bg-neutral-600">
