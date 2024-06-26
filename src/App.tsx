@@ -1,6 +1,6 @@
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter,Route,Routes } from "react-router-dom"
 import Footer from "./shared/footer/Footer"
-// import Login from "./pages/Login"
+import Login from "./pages/Login"
 // import Loader from "./components/Loader"
 // import NotFound from "./shared/notFound/NotFound"
 // import NotFound2 from "./shared/notFound/NotFound2"
@@ -11,9 +11,10 @@ function App() {
   return (
     <BrowserRouter>
      {/* <Header/> */}
-    {/* <Routes>
-     
-    </Routes> */}
+    <Routes>
+     <Route path="/login" element={<Login/>}></Route>
+     {/* <Route path="/" element={<Main />}></Route> */}
+    </Routes>
     {/* <Footer/> */}
     {/* <Routes>
       <Route path="/loading" element={<Loader/>}></Route>
