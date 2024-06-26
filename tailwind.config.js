@@ -32,15 +32,6 @@ export default {
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
       },
-      width: {
-        '398': '398px',
-      },
-      height: {
-        '447.95': '447.95px',
-      },
-      borderWidth: {
-        '1': '1px',
-      },
     },
   },
   plugins: [],
