@@ -1,20 +1,12 @@
-import { BrowserRouter,Route, Routes } from "react-router-dom"
-import Footer from "./shared/footer/Footer"
-import Header from "./shared/header/Header"
+import React from 'react';
+import Tvshow from './components/Tvshow';
 
-
-function App() {
- 
- 
+const App = () => {
   return (
-    <BrowserRouter>
-    <Header/>
-    <Routes>
-      <Route path="/" element={"pagina coloca aqui"}></Route>
-    </Routes>
-    <Footer/>
-    </BrowserRouter>
-  )
-}
+    <div>
+      <Tvshow />
+    </div>
+  );
+};
 
-export default App
+export default App;
