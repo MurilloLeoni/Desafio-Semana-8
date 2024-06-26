@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/compass-uol.png";
+import logo from "../../assets/img/compass-uol.png";
 import IconHome from '../../components/icons/IconHome';
 import IconTv from '../../components/icons/IconTv';
 import IconMovie from '../../components/icons/IconMovie';

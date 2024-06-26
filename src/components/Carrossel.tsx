@@ -5,7 +5,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 // interface imgPath{
 // poster_path:string
 // }
-import img from "../assets/cover.png";
+import img from "../assets/img/cover.png";
 import '@splidejs/react-splide/css';
 
 const Carrossel = () => {

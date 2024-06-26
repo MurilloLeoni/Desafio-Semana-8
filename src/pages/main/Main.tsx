@@ -8,6 +8,7 @@ import Header from "../../shared/header/Header";
 import Celebrity from "./celebrity-component/Celebrity";
 import ButtonClicked from "../../components/Buttons/ButtonClicked";
 import {Route, Routes} from "react-router-dom"
+// import Login from "../Login";
 
 interface requisicao {
   poster_path: string;
@@ -105,6 +106,7 @@ const Main = () => {
     <Routes>
         {/* <Route path="" element={<NotFound />}/> */}
         {/* <Route path="not" element={<NotFound2 />}/> */}
+        
         <Route path="/" element={<Home />}></Route>
         <Route path="/movie" element={<Movie />}></Route>
         <Route path="/serie" element={<Serie />}></Route>

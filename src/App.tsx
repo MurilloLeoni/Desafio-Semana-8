@@ -1,10 +1,7 @@
-import { BrowserRouter,Route, Routes } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 import Footer from "./shared/footer/Footer"
-import Header from "./shared/header/Header"
-import Login from "./pages/Login"
-import Loader from "./components/Loader"
-import { BrowserRouter} from "react-router-dom";
-import Footer from "./shared/footer/Footer";
+// import Login from "./pages/Login"
+// import Loader from "./components/Loader"
 // import NotFound from "./shared/notFound/NotFound"
 // import NotFound2 from "./shared/notFound/NotFound2"
 
@@ -14,13 +11,13 @@ function App() {
   return (
     <BrowserRouter>
      {/* <Header/> */}
-    <Routes>
-      <Route path="/" element={<Login/>}></Route>
-    </Routes>
+    {/* <Routes>
+     
+    </Routes> */}
     {/* <Footer/> */}
-    <Routes>
+    {/* <Routes>
       <Route path="/loading" element={<Loader/>}></Route>
-    </Routes>
+    </Routes> */}
       <Main />
 
       <Footer />
