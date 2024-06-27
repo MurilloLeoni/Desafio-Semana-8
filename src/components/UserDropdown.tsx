@@ -27,9 +27,9 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ isOpen, toggleDropdown, clo
       };
    }, [isOpen, closeDropdown]);
 
-   const styleTextUser = "text-white opacity-80 text-base font-normal font-montserrat"
+   const styleTextUser = "text-white opacity-80 font-normal body-review"
 
-   const styleTextSettings = "text-start text-white text-base font-normal font-montserrat font-medium px-1 py-2 w-full hover:bg-neutral-600"
+   const styleTextSettings = "text-start text-white body-review font-medium px-1 py-2 w-full hover:bg-neutral-600"
 
    const styleButtonUser = "left-[20px] top-[20px] justify-start items-center gap-4 inline-flex py-2 w-full hover:bg-neutral-600 rounded-md"
 
@@ -55,7 +55,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ isOpen, toggleDropdown, clo
                <div className="left-[20px] top-[220px] flex-col justify-between items-start inline-flex w-full mt-2">
                   <button className={styleTextSettings}>Editar perfis</button>
                   <button className={styleTextSettings}>Preferências</button>
-                  <button className="text-start text-blue-400 text-base font-montserrat font-medium px-1 py-2 w-full hover:bg-neutral-600 rounded-md">Minha assinatura</button>
+                  <button className="text-start text-blue-400 button-text font-medium px-1 py-2 w-full hover:bg-neutral-600 rounded-md">Minha assinatura</button>
                   <button className={styleTextSettings}>Minha conta</button>
                   <button className={styleTextSettings}>Ajuda</button>
                   <button className={styleTextSettings}>Sair</button>

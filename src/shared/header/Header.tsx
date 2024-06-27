@@ -112,7 +112,7 @@ const Header: React.FC<Props> = () => {
 								<div className="relative gap-y-4 w-[302px] md:w-[450px] h-[102px] md:h-[67px] px-4 py-3 bg-neutral-700 rounded border border-neutral-400 justify-center items-start md:items-center flex flex-col md:flex-row">
 								<input
 									type="text"
-									className="bg-neutral-700 text-white text-base font-normal font-['Lato'] min-w-56"
+										className="bg-neutral-700 text-white text-base font-normal body-review min-w-56"
 									placeholder="Filme, série ou celebridade"
 								/>
 								<div className="justify-end items-center gap-3 flex">

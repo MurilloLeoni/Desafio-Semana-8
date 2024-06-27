@@ -29,7 +29,7 @@ export default {
         }
       },
       fontFamily: {
-        montserrat: ['"Montserrat"', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
       }
     },
   },
