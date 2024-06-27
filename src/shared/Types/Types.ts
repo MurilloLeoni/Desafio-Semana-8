@@ -2,6 +2,7 @@ import serie from "../API/Model/Serie";
 
 export type serieProps = {
   serie: serie | null | undefined;
+  children:string
 };
 
 export type OptionsType = {

@@ -14,6 +14,10 @@
   @apply font-montserrat font-bold text-[24px];
 }
 
+.h3-heading-normal {
+  @apply font-montserrat font-normal text-[24px];
+}
+
 .h4-heading {
   @apply font-montserrat font-bold text-[20px];
 }

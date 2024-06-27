@@ -12,7 +12,7 @@ const ButtonClicked = ( {classChildren,className}: elementos ) => {
   }
   return (
     <button className={active?`hover:bg-opacity-black-60 ${className}`:`hover:bg-white ${className}` } onClick={handleActive}>
-      <i className={active?"fa-solid fa-check text-secondary":classChildren}></i>
+      <i className={active?"fa-solid fa-check fa-lg text-secondary":classChildren}></i>
     </button>
   )
 }

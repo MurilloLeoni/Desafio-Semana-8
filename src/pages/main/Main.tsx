@@ -1,23 +1,63 @@
-// import { useEffect, useState } from "react";
 import { apiImageUrl } from "../../shared/API/Config/Config";
-import Home from "./home-component/Home";
-import Movie from "./movie-component/Movie";
-import Serie from "./serie-component/Serie";
 import Header from "../../shared/header/Header";
-import Celebrity from "./celebrity-component/Celebrity";
-import { Route, Routes } from "react-router-dom";
-import HomeHeader from "./home-component/HomeHeader";
+// import Celebrity from "./celebrity-component/Celebrity";
+import Footer from "../../shared/footer/Footer";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
+import HomeHeader from "../../components/headers-home/HomeHeader";
 import { apiRequest } from "../../shared/API/Config/Config";
 
 import serie from "../../shared/API/Model/Serie";
 import useApi from "../../shared/API/Hooks/useApi";
-
+import SerieMovieTitle from "../../components/headers-home/SerieMovieTitle";
+import { useEffect, useState } from "react";
+import { OptionsType } from "../../shared/Types/Types";
+interface Components {
+  movieOrSerie: boolean;
+  showMovieSerie: boolean;
+}
 const Main = () => {
   // const [serie, setSerie] = useState<serie | null>();
-  const options = apiRequest("GET", "https://api.themoviedb.org/3/tv/94997");
+  const [components, setComponents] = useState<Components>({
+    movieOrSerie: false,
+    showMovieSerie: false,
+  });
+  const options: OptionsType = apiRequest(
+    "GET",
+    `https://api.themoviedb.org/3/tv/94997`
+  );
+  const location = useLocation();
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/home":
+        setComponents({
+          movieOrSerie: false,
+          showMovieSerie: false,
+        });
+        return;
+      case "/home/serie":
+        setComponents({
+          movieOrSerie: true,
+          showMovieSerie: true,
+        });
+        return;
+      case "/home/movie":
+        setComponents({
+          movieOrSerie: false,
+          showMovieSerie: true,
+        });
+        return;
+      case "/home/celebrity":
+        setComponents({
+          movieOrSerie: false,
+          showMovieSerie: false,
+        });
+        return;
+    }
+  }, [location]);
+
   const serie: serie | undefined = useApi(options);
   let imgUrl: string = "";
-
   if (serie) {
     imgUrl = apiImageUrl(serie?.backdrop_path);
   }
@@ -30,20 +70,19 @@ const Main = () => {
       >
         <div className="image-bg-container">
           <Header />
-          <HomeHeader serie={serie} />
+          {components.showMovieSerie && (
+            <SerieMovieTitle
+              serie={serie}
+              children={components.movieOrSerie ? "Séries" : "Filmes"}
+            />
+          )}
+          <HomeHeader serie={serie} children={""} />
         </div>
       </div>
       <div className=" bg-neutral-600">
-        <Routes>
-          {/* <Route path="" element={<NotFound />}/> */}
-          {/* <Route path="not" element={<NotFound2 />}/> */}
-
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/movie" element={<Movie />}></Route>
-          <Route path="/serie" element={<Serie />}></Route>
-          <Route path="/celebrity" element={<Celebrity />}></Route>
-        </Routes>
+        <Outlet />
       </div>
+      <Footer />
     </div>
   );
 };

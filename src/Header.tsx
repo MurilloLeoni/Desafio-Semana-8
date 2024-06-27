@@ -40,7 +40,7 @@ const Header = () => {
 				<div className="w-full flex items-center flex-col-reverse lg:flex-row">
 					<div className=" justify-center items-start md:items-center flex text-center sm:block">
 						<nav className="p-4">
-							<NavLink to="/home" className={linkStyle} end>
+							<NavLink to="/" className={linkStyle} end>
 								{({ isActive }) => (
 									<>
 										<IconHome className={iconStyle({ isActive })} />
