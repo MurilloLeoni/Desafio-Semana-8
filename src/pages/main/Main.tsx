@@ -8,6 +8,7 @@ import Header from "../../shared/header/Header";
 import Celebrity from "./celebrity-component/Celebrity";
 import ButtonClicked from "../../components/Buttons/ButtonClicked";
 import {Route, Routes} from "react-router-dom"
+import User_Account from "../User_Account";
 // import Login from "../Login";
 
 interface requisicao {
@@ -111,6 +112,7 @@ const Main = () => {
         <Route path="/movie" element={<Movie />}></Route>
         <Route path="/serie" element={<Serie />}></Route>
         <Route path="/celebrity" element={<Celebrity /> }></Route>
+        {/* <Route path="/user" element={<User_Account /> }></Route> */}
     </Routes>
     
    
