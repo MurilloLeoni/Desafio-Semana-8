@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react';
-import iconExpand from "../assets/icons/expand_more.svg";
 
 type SearchDropdownProps = {
    isOpen: boolean;
@@ -9,6 +8,8 @@ type SearchDropdownProps = {
 
 const SearchDropdown: React.FC<SearchDropdownProps> = ({ isOpen, toggleDropdown, closeDropdown }) => {
    const dropdownRef = useRef<HTMLDivElement>(null);
+
+   const linkStyle = "text-start block px-6 w-full py-2 hover:bg-white rounded-md";
 
    useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
@@ -30,17 +31,22 @@ const SearchDropdown: React.FC<SearchDropdownProps> = ({ isOpen, toggleDropdown,
 
    return (
       <div ref={dropdownRef} className="relative">
-         <div className="h-[43px] p-3 rounded border-2 border-white/opacity-10 justify-end items-center flex cursor-pointer" onClick={toggleDropdown}>
+         <button className="gap-4 h-[43px] p-3 rounded border-2 border-neutral-500 justify-end items-center flex cursor-pointer" onClick={toggleDropdown}>
             <div className="text-white text-base font-normal font-['Lato']">Filmes</div>
-            <div className="w-4 h-4 relative" />
-            <img className="m-0" src={iconExpand} alt="Expandir" />
-         </div>
+            {isOpen ? (
+               <i className="fa-solid fa-angle-up text-white"></i>
+            ) : (
+               <i className = "fa-solid fa-angle-down text-white"></i>
+            )}
+         </button>
          {isOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
-               <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Action</a>
-               <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Drama</a>
-               <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">Comedy</a>
-            </div>
+            <ul className="font-montserrat text-indigo-950 font-[600] absolute p-2 left-1/2 transform -translate-x-1/2 mt-3 w-[196px] h-[216px] bg-[#F3F5FB] border border-gray-200 rounded-lg shadow-lg z-10">
+               <li><button className={linkStyle}>Filmes</button></li>
+               <li><button className={linkStyle}>Coleções</button></li>
+               <li><button className={linkStyle}>Tudo</button></li>
+               <li><button className={linkStyle}>Séries</button></li>
+               <li><button className={linkStyle}>Celebridades</button></li>
+            </ul>
          )}
       </div>
    );
