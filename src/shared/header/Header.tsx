@@ -55,9 +55,7 @@ const Header: React.FC<Props> = () => {
 		<header className="w-full xl:h-[100.46px] sm:px-8 py-4 bg-gradient-to-b from-neutral-950 to-neutral-0 justify-between items-center inline-flex">
 			<div className={`flex xl:flex-row flex-col items-center w-full ${searchOpen ? 'gap-6 lg:gap-0' : ''}`}>
 				<div className={`relative py-4 flex justify-start ${searchOpen ? 'w-[350px] md:w-auto  gap-6 lg:gap-0' : ''}`}>
-					<NavLink to="/" className="">
-						<img src={logo} alt="Logo" className="w-[200px] h-[68.46px] " />
-					</NavLink>
+					<img src={logo} alt="Logo" className="w-[200px] h-[68.46px] " />
 				</div>
 				<div className={`w-full flex items-center flex-col-reverse xl:flex-row ${searchOpen ? 'gap-8 xl:gap-0' : 'gap-4'}`}>
 					<div className="justify-start items-start md:items-center flex text-center sm:block">
@@ -70,7 +68,7 @@ const Header: React.FC<Props> = () => {
 									</>
 								)}
 							</NavLink>
-							<NavLink to="not" className={linkStyle}>
+							<NavLink to="serie" className={linkStyle}>
 								{({ isActive }) => (
 									<>
 										<IconTv className={iconStyle({ isActive })} />
@@ -78,7 +76,7 @@ const Header: React.FC<Props> = () => {
 									</>
 								)}
 							</NavLink>
-							<NavLink to="not" className={linkStyle}>
+							<NavLink to="movie" className={linkStyle}>
 								{({ isActive }) => (
 									<>
 										<IconMovie className={iconStyle({ isActive })} />
@@ -86,7 +84,7 @@ const Header: React.FC<Props> = () => {
 									</>
 								)}
 							</NavLink>
-							<NavLink to="not" className={linkStyle}>
+							<NavLink to="celebrity" className={linkStyle}>
 								{({ isActive }) => (
 									<>
 										<IconStar className={iconStyle({ isActive })} />
@@ -103,7 +101,7 @@ const Header: React.FC<Props> = () => {
 									<IconSearch className="w-6 h-6" />
 									<p>Buscar</p>
 								</button>
-								<NavLink to="not" className={searchStyle}>
+								<NavLink to="" className={searchStyle}>
 									<IconPlus className="w-6 h-6" />
 									<p>Minha lista</p>
 								</NavLink>
@@ -127,9 +125,6 @@ const Header: React.FC<Props> = () => {
 							</div>
 						)}
 						<UserDropdown isOpen={userDropdownOpen} toggleDropdown={toggleUserDropdown} closeDropdown={closeUserDropdown} />
-						{/* <button className="w-12 h-12 rounded-full">
-							<img className="w-12 h-12 rounded-full border-2 border-cyan-400" src="https://via.placeholder.com/48x48" alt="user" />
-						</button> */}
 					</div>
 				</div>
 			</div>
