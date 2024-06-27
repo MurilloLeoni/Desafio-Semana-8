@@ -8,12 +8,16 @@ import IconSearch from '../../components/icons/IconSearch';
 import IconPlus from '../../components/icons/IconPlus';
 import IconStar from "../../components/icons/IconStar";
 import iconClose from "../../assets/icons/close.svg";
-import iconExpand from "../../assets/icons/expand_more.svg";
+
+import UserDropdown from "../../components/UserDropdown";
+import SearchDropdown from "../../components/SearchDropdown";
 
 type Props = {};
 
 const Header: React.FC<Props> = () => {
 	const [searchOpen, setSearchOpen] = useState(false);
+	const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+	const [searchDropdownOpen, setSearchDropdownOpen] = useState(false);
 	const location = useLocation();
 
 	React.useEffect(() => {
@@ -31,6 +35,21 @@ const Header: React.FC<Props> = () => {
 	const toggleSearch = () => {
 		setSearchOpen(!searchOpen);
 	};
+	const toggleUserDropdown = () => {
+		setUserDropdownOpen(!userDropdownOpen);
+	};
+	const closeUserDropdown = () => {
+		setUserDropdownOpen(false);
+	};
+
+	const toggleSearchDropdown = () => {
+		setSearchDropdownOpen(!searchDropdownOpen);
+	};
+
+	const closeSearchDropdown = () => {
+		setSearchDropdownOpen(false);
+	};
+
 
 	return (
 		<header className="w-full xl:h-[100.46px] sm:px-8 py-4 bg-gradient-to-b from-neutral-950 to-neutral-0 justify-between items-center inline-flex">
@@ -97,11 +116,7 @@ const Header: React.FC<Props> = () => {
 									placeholder="Filme, série ou celebridade"
 								/>
 								<div className="justify-end items-center gap-3 flex">
-									<div className="h-[43px] p-3 rounded border-2 border-white/opacity-10 justify-end items-center flex">
-										<div className="text-white text-base font-normal font-['Lato']">Filmes</div>
-										<div className="w-4 h-4 relative" />
-										<img className="m-0" src={iconExpand} alt="Expandir" />
-									</div>
+										<SearchDropdown isOpen={searchDropdownOpen} toggleDropdown={toggleSearchDropdown} closeDropdown={closeSearchDropdown} />
 									<button className="text-white" onClick={toggleSearch}>
 										<IconSearch className="w-6 h-6" />
 									</button>
@@ -111,9 +126,10 @@ const Header: React.FC<Props> = () => {
 								</div>
 							</div>
 						)}
-						<button className="w-12 h-12 rounded-full">
+						<UserDropdown isOpen={userDropdownOpen} toggleDropdown={toggleUserDropdown} closeDropdown={closeUserDropdown} />
+						{/* <button className="w-12 h-12 rounded-full">
 							<img className="w-12 h-12 rounded-full border-2 border-cyan-400" src="https://via.placeholder.com/48x48" alt="user" />
-						</button>
+						</button> */}
 					</div>
 				</div>
 			</div>
