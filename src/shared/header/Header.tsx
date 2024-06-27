@@ -8,6 +8,7 @@ import IconSearch from '../../components/icons/IconSearch';
 import IconPlus from '../../components/icons/IconPlus';
 import IconStar from "../../components/icons/IconStar";
 import iconClose from "../../assets/icons/close.svg";
+import iconExpand from "../../assets/icons/expand_more.svg";
 
 type Props = {};
 
@@ -20,12 +21,12 @@ const Header: React.FC<Props> = () => {
 	}, [location]);
 
 	const linkStyle = ({ isActive }: { isActive: boolean }) =>
-		`px-4 py-2 text-white inline-flex gap-2 body-review ${isActive ? "text-cyan-400" : ""}`;
+		`px-4 py-2 inline-flex gap-2 body-review ${isActive ? "text-cyan-400" : "text-white"}`;
 
 	const searchStyle = `sm:p-4 p-2 text-white inline-flex gap-2 body-review`;
 
 	const iconStyle = ({ isActive }: { isActive: boolean }) =>
-		`fill-white ${isActive ? "fill-cyan-400" : ""}`;
+		`${isActive ? "fill-cyan-400" : "fill-white"}`;
 
 	const toggleSearch = () => {
 		setSearchOpen(!searchOpen);
@@ -33,15 +34,15 @@ const Header: React.FC<Props> = () => {
 
 	return (
 		<header className="w-full xl:h-[100.46px] sm:px-8 py-4 bg-gradient-to-b from-neutral-950 to-neutral-0 justify-between items-center inline-flex">
-			<div className="flex xl:flex-row flex-col items-center w-full">
-				<div className="relative py-4">
+			<div className={`flex xl:flex-row flex-col items-center w-full ${searchOpen ? 'gap-6 lg:gap-0' : ''}`}>
+				<div className={`relative py-4 flex justify-start ${searchOpen ? 'w-[350px] md:w-auto  gap-6 lg:gap-0' : ''}`}>
 					<NavLink to="/" className="">
-						<img src={logo} alt="Logo" className="w-[200px] h-[68.46px]" />
+						<img src={logo} alt="Logo" className="w-[200px] h-[68.46px] " />
 					</NavLink>
 				</div>
-				<div className="w-full flex items-center flex-col-reverse lg:flex-row gap-y-4">
+				<div className={`w-full flex items-center flex-col-reverse xl:flex-row ${searchOpen ? 'gap-8 xl:gap-0' : 'gap-4'}`}>
 					<div className="justify-start items-start md:items-center flex text-center sm:block">
-						<nav className="px-4">
+						<nav className="px-4 xl:px-2">
 							<NavLink to="/" className={linkStyle} end>
 								{({ isActive }) => (
 									<>
@@ -76,7 +77,7 @@ const Header: React.FC<Props> = () => {
 							</NavLink>
 						</nav>
 					</div>
-					<div className="flex h-12 items-center w-auto lg:ml-auto lg:justify-center gap-1 sm-[320]:gap-4">
+					<div className="flex h-12 items-center w-auto xl:ml-auto xl:justify-center gap-1 sm-[320]:gap-4">
 						{!searchOpen ? (
 							<nav className="min-[320px]:flex-row gap-1 flex">
 								<button className={searchStyle} onClick={toggleSearch}>
@@ -96,9 +97,10 @@ const Header: React.FC<Props> = () => {
 									placeholder="Filme, série ou celebridade"
 								/>
 								<div className="justify-end items-center gap-3 flex">
-									<div className="h-[43px] p-3 rounded border-2 border-white/opacity-10 justify-end items-center gap-2.5 flex">
+									<div className="h-[43px] p-3 rounded border-2 border-white/opacity-10 justify-end items-center flex">
 										<div className="text-white text-base font-normal font-['Lato']">Filmes</div>
 										<div className="w-4 h-4 relative" />
+										<img className="m-0" src={iconExpand} alt="Expandir" />
 									</div>
 									<button className="text-white" onClick={toggleSearch}>
 										<IconSearch className="w-6 h-6" />
