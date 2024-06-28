@@ -38,7 +38,7 @@
   @apply font-montserrat font-normal text-[12px];
 }
 
-.button-text{
+.button-text {
     @apply font-montserrat font-bold text-[16px]
 }
 .button-text {
