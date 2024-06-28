@@ -125,7 +125,7 @@ const Main = () => {
         return;
       }
     }
-  }, [location.pathname, api]);
+  }, [location.pathname,SerieID]);
 
   return (
     <div className="">
