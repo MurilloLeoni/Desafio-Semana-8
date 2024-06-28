@@ -10,6 +10,9 @@ import Home from "./pages/main/home-component/Home";
 import Movie from "./pages/main/movie-component/Movie";
 import Serie from "./pages/main/serie-component/Serie";
 import Celebrity from "./pages/main/celebrity-component/Celebrity";
+import Player from "./components/Player";
+// import Tvshow from "./components/Tvshow";
+import SerieFilho from "./pages/main/serie-component/SerieFilho";
 
 function App() {
   return (
@@ -22,7 +25,9 @@ function App() {
         <Route path="movie" element={<Movie />} />
         <Route path="serie" element={<Serie />} />
         <Route path="celebrity" element={<Celebrity />} />
+        <Route path="serie/:id" element={<SerieFilho/>}/>
         </Route>
+        <Route path="/player" element={<Player/>} />
       </Routes> 
       
       {/* <Routes>
@@ -30,7 +35,7 @@ function App() {
     </Routes> */}
 
      {/* <Route path="" element={<NotFound />}/> */}
-      
+      {/* <Tvshow/> */}
 
       
     </BrowserRouter>

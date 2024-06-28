@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Player = () => {
   return (
     <div>
@@ -14,7 +12,7 @@ const Player = () => {
         </div>
         </div>
     <div className="absolute bottom-0 w-full flex justify-between cursor-pointer p-4">
-        <img className='absolute bottom-[54px] left-11 mx-auto' src="/src/assets/images/progressbar.png" alt="Barra progresso filme" />
+        <img className='absolute bottom-[54px] left-11 mx-auto' src="/src/assets/img/progressbar.png" alt="Barra progresso filme" />
       <div className="w-[358px] flex justify-between items-center ml-[20px]">
         <img src="/src/assets/icons/voltar.png" alt="Voltar player" />
         <img src="/src/assets/icons/pausar.png" alt="Pausar" />

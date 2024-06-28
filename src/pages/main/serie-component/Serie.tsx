@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Serie = () => {
   return (
     <div className="ml-16 pt-2">

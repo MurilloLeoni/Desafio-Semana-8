@@ -15,10 +15,12 @@ const useApi = (options: OptionsType) => {
       })
       .catch(function (error) {
         console.error(error);
-      });
+      })
   }, [options]);
 
+
   if (data) {
+   
     return data;
   }
 };
