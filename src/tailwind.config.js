@@ -26,16 +26,10 @@ export default {
           "black-10": "rgba(0, 0, 0, 0.1)",
           "gray-40": "rgba(249, 249, 249, 0.4)",
           "white-10": "rgba(255, 255, 255, 0.1)"
-        },
-        customColor: "rgba(53, 56, 67, 0.79)",
+        }
       },
-      
       fontFamily: {
-<<<<<<< HEAD
-        montserrat: ['Montserrat', 'sans-serif'],
-=======
         montserrat: ['"work sans"', 'sans-serif'],
->>>>>>> origin/main_header
       }
 
     },

@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/compass-uol.png";
+=======
+import { NavLink } from "react-router-dom";
+import logo from "../../assets/img/compass-uol.png";
+>>>>>>> origin/main_header
 import IconHome from '../../components/icons/IconHome';
 import IconTv from '../../components/icons/IconTv';
 import IconMovie from '../../components/icons/IconMovie';
@@ -12,8 +17,9 @@ import iconClose from "../../assets/icons/close.svg";
 import UserDropdown from "../../components/UserDropdown";
 import SearchDropdown from "../../components/SearchDropdown";
 
-type Props = {};
+// type Props = {};
 
+<<<<<<< HEAD
 const Header: React.FC<Props> = () => {
 	const [searchOpen, setSearchOpen] = useState(false);
 	const [userDropdownOpen, setUserDropdownOpen] = useState(false);
@@ -23,13 +29,26 @@ const Header: React.FC<Props> = () => {
 	React.useEffect(() => {
 		console.log("Mudou a rota");
 	}, [location]);
+=======
+const Header = () => {
+
+	// React.useEffect(() => {
+	// 	console.log("Mudou a rota");
+	// }, [location]);
+>>>>>>> origin/main_header
 
 	const linkStyle = ({ isActive }: { isActive: boolean }) =>
+<<<<<<< HEAD
 		`px-4 py-2 inline-flex gap-2 body-review ${isActive ? "text-cyan-400" : "text-white"}`;
+=======
+		`p-4 text-white inline-flex gap-2 body-review ${isActive ? "text-[#02E7F5]" : ""
+		}`;
+>>>>>>> origin/main_header
 
 	const searchStyle = `sm:p-4 p-2 text-white inline-flex gap-2 body-review`;
 
 	const iconStyle = ({ isActive }: { isActive: boolean }) =>
+<<<<<<< HEAD
 		`${isActive ? "fill-cyan-400" : "fill-white"}`;
 
 	const toggleSearch = () => {
@@ -61,6 +80,22 @@ const Header: React.FC<Props> = () => {
 					<div className="justify-start items-center flex text-center sm:block">
 						<nav className="px-4 xl:px-2">
 							<NavLink to="/" className={linkStyle} end>
+=======
+		`fill-white ${isActive ? "fill-[#02E7F5]" : ""}`;
+
+	return (
+		<header className="w-full xl:h-[100.46px]  sm:px-8 py-4 bg-gradient-to-b from-neutral-950 to-neutral-0 justify-between items-center inline-flex">
+			<div className="flex xl:flex-row flex-col items-center w-full ">
+				<div className="relative">
+					<NavLink to="" className={""} end>
+						<img src={logo} alt="Logo" className="w-[200px] h-[68.46px]" />
+					</NavLink>
+				</div>
+				<div className="w-full flex items-center flex-col-reverse lg:flex-row">
+					<div className=" justify-center items-start md:items-center flex text-center sm:block">
+						<nav className="p-4">
+							<NavLink to="/home" className={linkStyle} end>
+>>>>>>> origin/main_header
 								{({ isActive }) => (
 									<>
 										<IconHome className={iconStyle({ isActive })} />
