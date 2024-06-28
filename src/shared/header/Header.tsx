@@ -58,7 +58,7 @@ const Header: React.FC<Props> = () => {
 					<img src={logo} alt="Logo" className="w-[200px] h-[68.46px] " />
 				</div>
 				<div className={`w-full flex items-center flex-col-reverse xl:flex-row ${searchOpen ? 'gap-8 xl:gap-0' : 'gap-4'}`}>
-					<div className="justify-start items-start md:items-center flex text-center sm:block">
+					<div className="justify-start items-center flex text-center sm:block">
 						<nav className="px-4 xl:px-2">
 							<NavLink to="/" className={linkStyle} end>
 								{({ isActive }) => (
@@ -94,9 +94,9 @@ const Header: React.FC<Props> = () => {
 							</NavLink>
 						</nav>
 					</div>
-					<div className="flex h-12 items-center w-auto xl:ml-auto xl:justify-center gap-1 sm-[320]:gap-4">
+					<div className="flex h-12 items-center w-auto xl:ml-auto xl:justify-center gap-1 sm:gap-4 ">
 						{!searchOpen ? (
-							<nav className="min-[320px]:flex-row gap-1 flex">
+							<nav className="min-[320px]:flex-row gap-1 flex flex-col max-[260px]:flex-col">
 								<button className={searchStyle} onClick={toggleSearch}>
 									<IconSearch className="w-6 h-6" />
 									<p>Buscar</p>
@@ -107,14 +107,14 @@ const Header: React.FC<Props> = () => {
 								</NavLink>
 							</nav>
 						) : (
-								<div className="relative gap-y-4 w-[302px] md:w-[450px] h-[102px] md:h-[67px] px-4 py-3 bg-neutral-700 rounded border border-neutral-400 justify-center items-start md:items-center flex flex-col md:flex-row">
+							<div className="relative gap-y-4 w-[302px] md:w-[450px] h-[102px] md:h-[67px] px-4 py-3 bg-neutral-700 rounded border border-neutral-400 justify-center items-start md:items-center flex flex-col md:flex-row">
 								<input
 									type="text"
-										className="bg-neutral-700 text-white text-base font-normal body-review min-w-56"
+									className="bg-neutral-700 text-white text-base font-normal body-review min-w-56"
 									placeholder="Filme, série ou celebridade"
 								/>
 								<div className="justify-end items-center gap-3 flex">
-										<SearchDropdown isOpen={searchDropdownOpen} toggleDropdown={toggleSearchDropdown} closeDropdown={closeSearchDropdown} />
+									<SearchDropdown isOpen={searchDropdownOpen} toggleDropdown={toggleSearchDropdown} closeDropdown={closeSearchDropdown} />
 									<button className="text-white" onClick={toggleSearch}>
 										<IconSearch className="w-6 h-6" />
 									</button>
@@ -126,6 +126,7 @@ const Header: React.FC<Props> = () => {
 						)}
 						<UserDropdown isOpen={userDropdownOpen} toggleDropdown={toggleUserDropdown} closeDropdown={closeUserDropdown} />
 					</div>
+
 				</div>
 			</div>
 		</header>
