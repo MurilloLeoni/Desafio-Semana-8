@@ -12,9 +12,9 @@ import iconClose from "../../assets/icons/close.svg";
 import UserDropdown from "../../components/UserDropdown";
 import SearchDropdown from "../../components/SearchDropdown";
 
-type Props = {};
 
-const Header: React.FC<Props> = () => {
+
+const Header: React.FC = () => {
 	const [searchOpen, setSearchOpen] = useState(false);
 	const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 	const [searchDropdownOpen, setSearchDropdownOpen] = useState(false);
