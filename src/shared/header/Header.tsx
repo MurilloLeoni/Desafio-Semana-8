@@ -21,7 +21,7 @@ const Header: React.FC<Props> = () => {
 	const location = useLocation();
 
 	React.useEffect(() => {
-		console.log("Mudou a rota");
+		// console.log("Mudou a rota");
 	}, [location]);
 
 	const linkStyle = ({ isActive }: { isActive: boolean }) =>

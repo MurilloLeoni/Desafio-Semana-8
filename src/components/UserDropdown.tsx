@@ -10,7 +10,9 @@ type UserDropdownProps = {
 
 const UserDropdown: React.FC<UserDropdownProps> = ({ isOpen, toggleDropdown, closeDropdown }) => {
    const dropdownRef = useRef<HTMLDivElement>(null);
-
+const Loggout = () =>{
+   console.log("saindo...")
+}
    useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
          if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -63,7 +65,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ isOpen, toggleDropdown, clo
                      <button className="text-start text-blue-400 button-text font-medium px-1 py-2 w-full hover:bg-neutral-600 rounded-md">Minha assinatura</button>
                      <button className={style.TextSettings}>Minha conta</button>
                      <button className={style.TextSettings}>Ajuda</button>
-                     <button className={style.TextSettings}>Sair</button>
+                     <button className={style.TextSettings} onClick={Loggout}>Sair</button>
                   </div>
                </div>
             </div>
