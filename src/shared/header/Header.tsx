@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import logo from "../../assets/compass-uol.png";
+import logo from "../../assets/img/compass-uol.png";
 import IconHome from '../../components/icons/IconHome';
 import IconTv from '../../components/icons/IconTv';
 import IconMovie from '../../components/icons/IconMovie';
@@ -60,7 +60,7 @@ const Header: React.FC<Props> = () => {
 				<div className={`w-full flex items-center flex-col-reverse xl:flex-row ${searchOpen ? 'gap-8 xl:gap-0' : 'gap-4'}`}>
 					<div className="justify-start items-center flex text-center sm:block">
 						<nav className="px-4 xl:px-2">
-							<NavLink to="/" className={linkStyle} end>
+							<NavLink to="/home" className={linkStyle} end>
 								{({ isActive }) => (
 									<>
 										<IconHome className={iconStyle({ isActive })} />

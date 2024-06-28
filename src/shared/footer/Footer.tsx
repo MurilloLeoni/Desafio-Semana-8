@@ -1,10 +1,10 @@
-import logo from "../../assets/compass-uol.png";
+import logo from "../../assets/img/compass-uol.png";
 
 const Footer = () => {
 
   const linkStyle = "inline-flex text-center text-white caption px-2";
   return (
-    <div className="w-screen h-min-[331px] absolute bottom-0 bg-gray-950 flex flex-col items-center pb-7 pt-9 px-4">
+    <div className="h-min-[331px]  bottom-0 bg-gray-950 flex flex-col items-center pb-7 pt-9 px-4">
       <div className='flex items-center justify-center'>
         <img src={logo} alt="Logo" className="w-[200px] h-[68.46px] top-[34px]" />
       </div>
