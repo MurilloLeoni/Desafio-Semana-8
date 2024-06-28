@@ -28,9 +28,9 @@ const CustomButton = () => {
 
   const buttons = images.map((image, index) => (
     <a href="https://seu-link-aqui.com" key={index} className="w-full flex justify-center">
-      <button className="bg-[#1A1D29] hover:bg-[#1A1D29] text-[#C8C9CB] font-bold rounded-lg flex items-center justify-start w-full sm:w-[200px] md:w-[200px] lg:w-[630px] h-[120px] md:h-[128px] relative overflow-hidden p-0 mb-4">
-        <img src={image} alt={`Cover ${index + 1}`} className="h-full object-cover rounded-l-lg" style={{ width: '221px', flexShrink: 0 }} />
-        <div className="flex flex-col pl-4" style={{ flex: 1, padding: '8px 16px', alignItems: 'flex-start' }}>
+      <button className="bg-[#1A1D29] hover:bg-[#1A1D29] text-[#C8C9CB] font-bold rounded-lg flex items-center justify-start w-full h-auto relative overflow-hidden p-0 mb-4 md:flex-row flex-col">
+        <img src={image} alt={`Cover ${index + 1}`} className="object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none w-full md:w-[180px] h-auto md:h-full" />
+        <div className="flex flex-col pl-4 md:pl-4 py-4 md:py-0" style={{ flex: 1, padding: '8px 16px', alignItems: 'flex-start' }}>
           <h3 className="text-lg font-bold" style={{ alignSelf: 'flex-start', color: 'white' }}>{titles[index]}</h3>
           <span className="text-sm md:text-lg">
             {descriptions[index]}
@@ -45,13 +45,8 @@ const CustomButton = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-gray-100">
-        <div className="flex flex-col space-y-4">
-          {buttons.slice(0, 3)}
-        </div>
-        <div className="flex flex-col space-y-4">
-          {buttons.slice(3, 6)}
-        </div>
+      <div className="grid grid-cols-2 gap-4 p-4 bg-gray-100 md:grid-cols-2 md:gap-4 md:p-4">
+        {buttons}
       </div>
     </div>
   );
