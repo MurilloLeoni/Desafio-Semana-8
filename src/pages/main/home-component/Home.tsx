@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Carrossel from "../../../components/Carrossel";
 import { apiRequest } from "../../../shared/API/Config/Config";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 interface carrossel {
   id: string;
   poster_path: string;
@@ -9,9 +10,11 @@ interface carrossel {
 const Home = () => {
   const [data, setData] = useState<carrossel[] | null>(null);
 
+  const navigate = useNavigate()
+
   const options = apiRequest(
     "GET",
-    "https://api.themoviedb.org/3/movie/now_playing"
+    "https://api.themoviedb.org/3/tv/popular"
   );
   useEffect(() => {
     axios
@@ -30,7 +33,7 @@ const Home = () => {
   }
 
   const handleSeries = (id:string) =>{
-    console.log("serie",id)
+    navigate(`/home/serie/${id}`)
   }
   const handleFilmes = (id:string) =>{
     console.log("filmes",id)

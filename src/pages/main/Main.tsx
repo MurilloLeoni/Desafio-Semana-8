@@ -18,6 +18,7 @@ import useApi from "../../shared/API/Hooks/useApi";
 import SerieMovieTitle from "../../components/headers-home/SerieMovieTitle";
 import { useEffect, useState } from "react";
 import { OptionsType } from "../../shared/Types/Types";
+import axios from "axios";
 
 interface Components {
   movieOrSerie: boolean;
@@ -32,6 +33,7 @@ interface apiTeste {
 const Main = () => {
   const [serie, setSerie] = useState<apiTeste | null>();
   const [option, setOption] = useState<OptionsType | undefined>();
+  const [data,setData] = useState()
   const api = useApi(option);
 
   const SerieID = useParams();
@@ -42,6 +44,7 @@ const Main = () => {
     serieBtns:true,
     categorieBtns:false
   });
+
 
   const location = useLocation();
   // console.log(location.pathname);
@@ -111,7 +114,7 @@ const Main = () => {
         return;
       }
       case `/home/serie/${SerieID.id}`: {
-        setOption(apiRequest("GET", `https://api.themoviedb.org/3/tv/235484'`));
+        setOption(apiRequest("GET", `https://api.themoviedb.org/3/tv/${SerieID.id}`));
         setSerie({
           textos: api,
           img: apiImageUrl(api?.backdrop_path),
@@ -123,9 +126,10 @@ const Main = () => {
           categorieBtns:false
         });
         return;
+        
       }
     }
-  }, [location.pathname,SerieID,api]);
+  }, [location.pathname,SerieID,api,data]);
 
   return (
     <div className="">
