@@ -8,20 +8,20 @@ interface carrossel {
   poster_path: string;
 }
 const Home = () => {
-  const [data, setData] = useState<carrossel[] | null>(null);
+  const [serie, setSerie] = useState<carrossel[] | null>(null);
 
   const navigate = useNavigate()
 
   const options = apiRequest(
     "GET",
-    "https://api.themoviedb.org/3/tv/popular"
+    "https://api.themoviedb.org/3/tv/airing_today"
   );
   useEffect(() => {
     axios
       .request(options)
       .then(function (response) {
         // console.log(response.data.results);
-        setData(response.data.results);
+        setSerie(response.data.results);
       })
       .catch(function (error) {
         console.error(error);
@@ -42,18 +42,18 @@ const Home = () => {
   return (
     <div className="ml-16 pt-2 pb-11">
       <div className="flex flex-col gap-2">
-        <h4 className="h4-heading text-white">Coleções de halowen</h4>
+        {/* <h4 className="h4-heading text-white">Coleções de halowen</h4>
         <div>
           <Carrossel data={data} redirectCollection={handleCollection}/>
-        </div>
+        </div> */}
         <h4 className="h4-heading text-white">Séries em alta</h4>
         <div>
-          <Carrossel data={data} redirectCollection={handleSeries} />
+          <Carrossel data={serie} redirectCollection={handleSeries} />
         </div>
-        <h4 className="h4-heading text-white">Filmes em alta</h4>
+        {/* <h4 className="h4-heading text-white">Filmes em alta</h4>
         <div>
           <Carrossel data={data} redirectCollection={handleFilmes}/>
-        </div>
+        </div> */}
       </div>
     </div>
   );

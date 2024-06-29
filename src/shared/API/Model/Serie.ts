@@ -6,8 +6,21 @@ export default interface serie {
   first_air_date: string;
   genres: Genre[];
   number_of_seasons: number;
+  series:season[]
 }
  interface Genre {
   id: number;
   name: string;
+}
+
+interface season {
+  air_date:string;
+  episode_count:number;
+  id:number;
+  name:string;
+  overview:string;
+  poster_path:string
+  season_number:number
+  vote_average:number
+
 }
