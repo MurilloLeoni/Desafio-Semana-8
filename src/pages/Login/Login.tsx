@@ -1,5 +1,5 @@
 import { useNavigate , redirectDocument, useParams, useLocation  } from "react-router-dom";
-import { apiRequest } from "../shared/API/Config/Config";
+import { apiRequest } from "../../shared/API/Config/Config";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -33,7 +33,7 @@ const handleClick = () =>{
 
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-[url('src/assets/img/bg-login.png')] bg-cover bg-center">
-      <div className="border-none flex flex-col justify-center items-center text-center gap-6 border-1 p-7 rounded-[20px] text-white backdrop-blur bg-customColor md:w-[783px] md:h-[454px]">
+      <div className="border-none flex flex-col justify-center items-center text-center gap-6 border-1 p-7 rounded-[20px] text-white backdrop-blur bg-opacity-75 bg-[#353843] md:w-[783px] md:h-[454px]">
         <h1 className="h1-heading leading-[51.61px] whitespace-nowrap">
           Compass Video
         </h1>

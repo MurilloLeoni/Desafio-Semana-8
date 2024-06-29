@@ -23,9 +23,9 @@ const HomeHeader = ({ serie, serieBtns, categorieBtns }: homeHeaderProps) => {
 
         <p className="text-white caption">{serie?.genres[0].name}</p>
 
-        {serieBtns && <ButtonArea />}
+        {serieBtns && <ButtonArea data={serie}/>}
         <p className="body-large text-white">{serie?.overview}</p>
-        {categorieBtns && <ButtonArea />}
+        {categorieBtns && <ButtonArea data={serie}/>}
       </div>
     </div>
   );

@@ -26,7 +26,8 @@ export default {
           "black-10": "rgba(0, 0, 0, 0.1)",
           "gray-40": "rgba(249, 249, 249, 0.4)",
           "white-10": "rgba(255, 255, 255, 0.1)"
-        }
+        },
+        colorlogin:"#353843 "
       },
       fontFamily: {
         montserrat: ['"work sans"', 'sans-serif'],

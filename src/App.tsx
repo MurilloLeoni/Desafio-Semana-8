@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Login from "./pages/Login";
+import Login from "./pages/Login/Login";
 // import Loader from "./components/Loader"
 // import NotFound from "./shared/notFound/NotFound"
 // import NotFound2 from "./shared/notFound/NotFound2"
@@ -10,9 +10,10 @@ import Home from "./pages/main/home-component/Home";
 import Movie from "./pages/main/movie-component/Movie";
 import Serie from "./pages/main/serie-component/Serie";
 import Celebrity from "./pages/main/celebrity-component/Celebrity";
-import Player from "./components/Player";
+import Player from "./pages/Player/Player";
 // import Tvshow from "./components/Tvshow";
 import SerieFilho from "./pages/main/serie-component/SerieFilho";
+import VideoPlayer from "./components/VideoPlayer";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
         <Route path="celebrity" element={<Celebrity />} />
         <Route path="serie/:id" element={<SerieFilho/>}/>
         </Route>
-        <Route path="/player" element={<Player/>} />
+        <Route path="/player" element={<VideoPlayer/>} />
       </Routes> 
       
       {/* <Routes>
