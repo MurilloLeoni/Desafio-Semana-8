@@ -2,11 +2,7 @@ import { apiImageUrl } from "../../shared/API/Config/Config";
 import Header from "../../shared/header/Header";
 // import Celebrity from "./celebrity-component/Celebrity";
 import Footer from "../../shared/footer/Footer";
-import {
-  Outlet,
-  useLocation,
-  useParams,
-} from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import HomeHeader from "../../components/headers-home/HomeHeader";
 import { apiRequest } from "../../shared/API/Config/Config";
 
@@ -20,58 +16,54 @@ import axios from "axios";
 interface Components {
   movieOrSerie: boolean;
   showMovieSerie: boolean;
-  serieBtns:boolean;
-  categorieBtns:boolean
+  serieBtns: boolean;
+  categorieBtns: boolean;
+  collectionBoll:boolean;
 }
 interface apiTeste {
   textos: serie | null | undefined;
   img: string | serie | null;
 }
 const Main = () => {
+  const storage = window.localStorage.getItem("token");
 
-
-
-
-  const storage = window.localStorage.getItem("token")
-
-
-  useEffect(()=>{
+  useEffect(() => {
     const options = {
-      method: 'POST',
-      url: 'https://api.themoviedb.org/3/authentication/session/new',
+      method: "POST",
+      url: "https://api.themoviedb.org/3/authentication/session/new",
       headers: {
-        accept: 'application/json',
-        'content-type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTQzNzk0M2M5YWFhODcxMDhjNmViNzk4OWZkMTg0MCIsIm5iZiI6MTcxOTYwNjUxMi4wOTc2MjEsInN1YiI6IjY2NzlmNjliYjUxYzg4MzU5NTNiNDAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eiL73ROy94HbKkXvaRV_mLrna-JL8FjT0UyhZZkiYck'
+        accept: "application/json",
+        "content-type": "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTQzNzk0M2M5YWFhODcxMDhjNmViNzk4OWZkMTg0MCIsIm5iZiI6MTcxOTYwNjUxMi4wOTc2MjEsInN1YiI6IjY2NzlmNjliYjUxYzg4MzU5NTNiNDAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eiL73ROy94HbKkXvaRV_mLrna-JL8FjT0UyhZZkiYck",
       },
-      data: {"request_token": storage}
+      data: { request_token: storage },
     };
 
     axios
-    .request(options)
-    .then(function (response) {
-      // console.log(response.data);
-      window.localStorage.setItem("sessionId",response.data.session_id)
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-  },[])
-
+      .request(options)
+      .then(function (response) {
+        // console.log(response.data);
+        window.localStorage.setItem("sessionId", response.data.session_id);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, []);
 
   const [serie, setSerie] = useState<apiTeste | null>();
   const [option, setOption] = useState<OptionsType | undefined>();
-  const {dados} = useApi(option);
+  const { dados } = useApi(option);
 
   const SerieID = useParams();
 
   const [components, setComponents] = useState<Components>({
     movieOrSerie: false,
     showMovieSerie: false,
-    serieBtns:true,
-    categorieBtns:false
+    serieBtns: true,
+    categorieBtns: false,
+    collectionBoll:true,
   });
-
 
   const location = useLocation();
   useEffect(() => {
@@ -86,14 +78,15 @@ const Main = () => {
         setComponents({
           movieOrSerie: false,
           showMovieSerie: false,
-          serieBtns:false,
-          categorieBtns:true
+          serieBtns: false,
+          categorieBtns: true,
+          collectionBoll:true,
         });
         return;
       }
 
       case "/home/serie": {
-        setOption(apiRequest("GET", 'https://api.themoviedb.org/3/tv/94954'));
+        setOption(apiRequest("GET", "https://api.themoviedb.org/3/tv/94954"));
 
         setSerie({
           textos: dados,
@@ -102,8 +95,9 @@ const Main = () => {
         setComponents({
           movieOrSerie: true,
           showMovieSerie: true,
-          serieBtns:false,
-          categorieBtns:true
+          serieBtns: false,
+          categorieBtns: true,
+          collectionBoll:true
         });
         return;
       }
@@ -119,8 +113,9 @@ const Main = () => {
         setComponents({
           movieOrSerie: false,
           showMovieSerie: true,
-          serieBtns:false,
-          categorieBtns:true
+          serieBtns: false,
+          categorieBtns: true,
+          collectionBoll:true
         });
         return;
       }
@@ -134,13 +129,16 @@ const Main = () => {
         setComponents({
           movieOrSerie: false,
           showMovieSerie: false,
-          serieBtns:false,
-          categorieBtns:true
+          serieBtns: false,
+          categorieBtns: true,
+          collectionBoll:true
         });
         return;
       }
       case `/home/serie/${SerieID.id}`: {
-        setOption(apiRequest("GET", `https://api.themoviedb.org/3/tv/${SerieID.id}`));
+        setOption(
+          apiRequest("GET", `https://api.themoviedb.org/3/tv/${SerieID.id}`)
+        );
         setSerie({
           textos: dados,
           img: apiImageUrl(dados?.backdrop_path),
@@ -148,15 +146,34 @@ const Main = () => {
         setComponents({
           movieOrSerie: false,
           showMovieSerie: false,
-          serieBtns:true,
-          categorieBtns:false
+          serieBtns: true,
+          categorieBtns: false,
+          collectionBoll:true
         });
         return;
-        
+      }
+      case `/home/collection/${SerieID.id}`: {
+        setOption(
+          apiRequest(
+            "GET",
+            `https://api.themoviedb.org/3/collection/${SerieID.id}`
+          )
+        );
+        setSerie({
+          textos: dados,
+          img: apiImageUrl(dados?.backdrop_path),
+        });
+        setComponents({
+          movieOrSerie: false,
+          showMovieSerie: false,
+          serieBtns: false,
+          categorieBtns: false,
+          collectionBoll:false
+        });
+        return;
       }
     }
-    
-  }, [location.pathname,SerieID,dados]);
+  }, [location.pathname,SerieID, dados]);
 
   return (
     <div className="">
@@ -172,7 +189,12 @@ const Main = () => {
               children={components.movieOrSerie ? "Séries" : "Filmes"}
             />
           )}
-          <HomeHeader serie={serie?.textos}  categorieBtns={components.categorieBtns} serieBtns={components.serieBtns}/>
+          <HomeHeader
+            serie={serie?.textos}
+            categorieBtns={components.categorieBtns}
+            serieBtns={components.serieBtns}
+            collectionsBoll={components.collectionBoll}
+          />
         </div>
       </div>
       <div className=" bg-neutral-600">

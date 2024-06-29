@@ -4,6 +4,7 @@ import { apiImageUrl, apiRequest } from "../../../shared/API/Config/Config"
 import axios from "axios"
 import serie from "../../../shared/API/Model/Serie"
 import { useParams } from "react-router-dom"
+import semImg from "../../../assets/img/sem-img.jpg"
 
 
 
@@ -30,7 +31,7 @@ const SerieFilho = () => {
       {
         (data?.seasons.map((season)=>(
         <div key={season.id} className="w-60 ">
-         <img src={apiImageUrl(season.poster_path)} className="w-full rounded-lg" alt="" />
+         <img src={season.poster_path? apiImageUrl(season?.poster_path):semImg} className="w-full rounded-lg" alt="" />
         </div>
         )))
       }

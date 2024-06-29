@@ -10,35 +10,34 @@ import Home from "./pages/main/home-component/Home";
 import Movie from "./pages/main/movie-component/Movie";
 import Serie from "./pages/main/serie-component/Serie";
 import Celebrity from "./pages/main/celebrity-component/Celebrity";
-import Player from "./pages/Player/Player";
 // import Tvshow from "./components/Tvshow";
 import SerieFilho from "./pages/main/serie-component/SerieFilho";
 import VideoPlayer from "./components/VideoPlayer";
+import Collections from "./pages/main/Collections/Collections";
 
 function App() {
   return (
     <BrowserRouter>
       {/* <Header/> */}
-       <Routes>
+      <Routes>
         <Route path="/" element={<Login />}></Route>
-        <Route path="/home/" element={<Main />}> 
-        <Route path="" element={<Home />} />
-        <Route path="movie" element={<Movie />} />
-        <Route path="serie" element={<Serie />} />
-        <Route path="celebrity" element={<Celebrity />} />
-        <Route path="serie/:id" element={<SerieFilho/>}/>
+        <Route path="/home/" element={<Main />}>
+          <Route path="" element={<Home />} />
+          <Route path="movie" element={<Movie />} />
+          <Route path="serie" element={<Serie />} />
+          <Route path="celebrity" element={<Celebrity />} />
+          <Route path="serie/:id" element={<SerieFilho />} />
+          <Route path="collection/:id" element={<Collections/>}/>
         </Route>
-        <Route path="/player" element={<VideoPlayer/>} />
-      </Routes> 
-      
+        <Route path="/player" element={<VideoPlayer />} />
+      </Routes>
+
       {/* <Routes>
       <Route path="/loading" element={<Loader/>}></Route>
     </Routes> */}
 
-     {/* <Route path="" element={<NotFound />}/> */}
+      {/* <Route path="" element={<NotFound />}/> */}
       {/* <Tvshow/> */}
-
-      
     </BrowserRouter>
   );
 }

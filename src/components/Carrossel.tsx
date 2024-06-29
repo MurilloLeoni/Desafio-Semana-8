@@ -7,6 +7,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 // }
 import "@splidejs/react-splide/css";
 import { apiImageUrl } from "../shared/API/Config/Config";
+import semImg from "../assets/img/sem-img.jpg"
 
 type carrosselType = {
   data: carrossel[] | null;
@@ -54,8 +55,8 @@ const Carrossel = ({ data, redirectCollection }:carrosselType) => {
         
           {data?.map((imagem) => (
             <SplideSlide key={imagem.id}>
-              <img
-                src={apiImageUrl(imagem?.poster_path)}
+             <img
+                src={imagem.poster_path? apiImageUrl(imagem?.poster_path):semImg}
                 onClick={() => redirectCollection(imagem.id)}
                 className="w-[260px] h-[361px] rounded-lg object-cover"
                 alt="sem imagem"
