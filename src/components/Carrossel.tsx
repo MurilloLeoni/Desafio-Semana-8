@@ -10,7 +10,7 @@ import { apiImageUrl } from "../shared/API/Config/Config";
 
 type carrosselType = {
   data: carrossel[] | null;
-  redirectCollection?: React.MouseEvent<HTMLElement>;
+  redirectCollection: React.MouseEvent<HTMLElement>;
 };
 
 interface carrossel {
@@ -26,24 +26,42 @@ const Carrossel = ({ data, redirectCollection }:carrosselType) => {
         options={{
           type: "slide",
           direction: "ltr",
+          breakpoints:{
+            640:{
+              perPage:2
+            },
+            800:{
+              perPage:3
+            },
+            1024:{
+              perPage:4
+            },
+            1200:{
+              perPage:7
+            }
+          },
           rewind: true,
           rewindByDrag: true,
           arrows: false,
+          pagination:true,
+          perPage:7,
+          gap:"20px",
           start: 1,
+          
+          
         }}
       >
-        <div className="flex gap-5">
+        
           {data?.map((imagem) => (
             <SplideSlide key={imagem.id}>
               <img
                 src={apiImageUrl(imagem?.poster_path)}
                 onClick={() => redirectCollection(imagem.id)}
                 className="w-[260px] h-[361px] rounded-lg object-cover"
-                alt="teste"
+                alt="sem imagem"
               />
             </SplideSlide>
           ))}
-        </div>
       </Splide>
     </div>
   );

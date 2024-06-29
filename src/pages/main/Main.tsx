@@ -4,11 +4,8 @@ import Header from "../../shared/header/Header";
 import Footer from "../../shared/footer/Footer";
 import {
   Outlet,
-  Route,
-  Routes,
   useLocation,
   useParams,
-  useSearchParams,
 } from "react-router-dom";
 import HomeHeader from "../../components/headers-home/HomeHeader";
 import { apiRequest } from "../../shared/API/Config/Config";
@@ -77,7 +74,6 @@ const Main = () => {
 
 
   const location = useLocation();
-  // console.log(location.pathname);
   useEffect(() => {
     switch (location.pathname) {
       case "/home": {
