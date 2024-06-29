@@ -159,6 +159,7 @@ const Main = () => {
         
       }
     }
+    
   }, [location.pathname,SerieID,dados]);
 
   return (
