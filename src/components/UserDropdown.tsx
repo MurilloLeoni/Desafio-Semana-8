@@ -12,6 +12,8 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ isOpen, toggleDropdown, clo
    const dropdownRef = useRef<HTMLDivElement>(null);
 const Loggout = () =>{
    console.log("saindo...")
+   window.localStorage.clear();
+   window.location.href = 'http://localhost:5173';
 }
    useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
@@ -57,10 +59,10 @@ const Loggout = () =>{
                   </button>
                   <button className={style.ButtonUser}>
                      <i className="fa-solid fa-plus text-white w-12 h-12 rounded-full bg-neutral-500 flex items-center justify-center"></i>
-                     <div className={style.TextUser}>Crear perfil</div>
+                     <div className={style.TextUser}>Criar perfil</div>
                   </button>
                   <div className="left-[20px] top-[220px] flex-col justify-between items-start inline-flex w-full mt-2">
-                     <button className={style.TextSettings}>Editar perfis</button>
+                     <button className={style.TextSettings}>Editar perfil</button>
                      <button className={style.TextSettings}>Preferências</button>
                      <button className="text-start text-blue-400 button-text font-medium px-1 py-2 w-full hover:bg-neutral-600 rounded-md">Minha assinatura</button>
                      <button className={style.TextSettings}>Minha conta</button>

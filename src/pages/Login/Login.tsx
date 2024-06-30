@@ -4,7 +4,7 @@ import axios from "axios";
 import Loader from "../../components/Loader";
 
 const Login = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   
 const handleClick = () =>{
   setIsLoading(true);

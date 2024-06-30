@@ -17,10 +17,10 @@ interface apiTeste {
 const Main = () => {
 
   useEffect(() => {
-    const loginMethod = window.localStorage.getItem("loginMethod");
+    const loginMethod: string | null = window.localStorage.getItem("loginMethod");
 
     if (loginMethod === "tmdb"){
-      const storage = window.localStorage.getItem("token");
+      const storage: string | null = window.localStorage.getItem("token");
       const options = {
       method: "POST",
       url: "https://api.themoviedb.org/3/authentication/session/new",
