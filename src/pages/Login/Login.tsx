@@ -14,9 +14,9 @@ const handleClick = () =>{
     .request(option)
     .then(function (response) {
       // console.log(response.data)
-      
-      window.location.href=`https://www.themoviedb.org/authenticate/${response.data.request_token}?redirect_to=http://localhost:5173/home`   
+      window.localStorage.setItem("loginMethod", "tmdb");
       window.localStorage.setItem("token",response.data.request_token)
+      window.location.href=`https://www.themoviedb.org/authenticate/${response.data.request_token}?redirect_to=http://localhost:5173/home`   
  })
     .catch(function (error) {
       console.error(error);
@@ -24,11 +24,14 @@ const handleClick = () =>{
     });
   }
 
-  const handleClickGuest = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      window.location.href = 'http://localhost:5173/home';
-    }, 1000);
+  const handleClickGuest = () => {    
+        setIsLoading(true);
+        
+        setTimeout(() => {
+          window.location.href='http://localhost:5173/home'
+          window.localStorage.setItem("loginMethod", "guest");
+      }, 1000);
+      
   }
 
   if (isLoading) {
