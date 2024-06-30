@@ -5,6 +5,7 @@ import axios from "axios"
 import serie from "../../../shared/API/Model/Serie"
 import { useParams } from "react-router-dom"
 import semImg from "../../../assets/img/sem-img.jpg"
+import HomeHeader from "../../../HomeHeader"
 
 
 
@@ -24,7 +25,11 @@ const SerieFilho = () => {
     });
   },[])
   return (
+    <div>
+      <HomeHeader serie={data} />
+      <div className="bg-neutral-600 pb-11">  
     <div className="pl-20 pb-11">
+      
       <h3 className="h4-heading text-white pb-4">Temporadas</h3>
       
       <div  className="pb-10 flex flex-row gap-5" >
@@ -41,6 +46,8 @@ const SerieFilho = () => {
         <h3 className="h4-heading text-white pb-4">Similares</h3>
         <Carrossel />
       </div>
+    </div>
+    </div>
     </div>
   )
 }

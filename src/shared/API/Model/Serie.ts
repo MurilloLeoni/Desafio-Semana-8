@@ -6,7 +6,7 @@ export default interface serie {
   first_air_date: string;
   genres: Genre[];
   number_of_seasons: number;
-  series:season[]
+  series:season[] 
 }
  interface Genre {
   id: number;

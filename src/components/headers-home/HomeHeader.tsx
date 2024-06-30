@@ -9,6 +9,7 @@ type homeHeaderProps = {
   categorieBtns: boolean;
   collectionsBoll:boolean
 };
+
 const HomeHeader = ({ serie, serieBtns, categorieBtns,collectionsBoll }: homeHeaderProps) => {
 
 
@@ -16,14 +17,14 @@ const HomeHeader = ({ serie, serieBtns, categorieBtns,collectionsBoll }: homeHea
     <div className=" flex flex-col py-40 px-4">
       <div className="flex flex-col ml-20 gap-5 max-w-[719px]">
         <h1 className="h1-heading text-white">{serie?.original_name}</h1>
-        {collectionsBoll && <span className="text-white body-small items-center flex gap-2">
+        {collectionsBoll?(<span className="text-white body-small items-center flex gap-2">
           {serie?.first_air_date.slice(0, 4)}
           <span className=" flex content-center w-0 bg-black">
             <i className="fa-solid fa-circle text-[4px] self-center"></i>
           </span>
          Seasons {serie?.number_of_seasons}
-        </span>}
-        {collectionsBoll && <p className="text-white caption">{serie?.genres[0].name}</p>}
+        </span>):null }
+        {collectionsBoll ?(<p className="text-white caption">{serie?.genres[0].name}</p>):null}
         
 
         {serieBtns && <ButtonArea data={serie} />}

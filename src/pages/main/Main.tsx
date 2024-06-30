@@ -3,7 +3,6 @@ import Header from "../../shared/header/Header";
 // import Celebrity from "./celebrity-component/Celebrity";
 import Footer from "../../shared/footer/Footer";
 import { Outlet, useLocation, useParams } from "react-router-dom";
-import HomeHeader from "../../components/headers-home/HomeHeader";
 import { apiRequest } from "../../shared/API/Config/Config";
 
 import serie from "../../shared/API/Model/Serie";
@@ -12,16 +11,7 @@ import SerieMovieTitle from "../../components/headers-home/SerieMovieTitle";
 import { useEffect, useState } from "react";
 import { OptionsType } from "../../shared/Types/Types";
 import axios from "axios";
-
-interface Components {
-  movieOrSerie: boolean;
-  showMovieSerie: boolean;
-  serieBtns: boolean;
-  categorieBtns: boolean;
-  collectionBoll:boolean;
-}
 interface apiTeste {
-  textos: serie | null | undefined;
   img: string | serie | null;
 }
 const Main = () => {
@@ -57,14 +47,6 @@ const Main = () => {
 
   const SerieID = useParams();
 
-  const [components, setComponents] = useState<Components>({
-    movieOrSerie: false,
-    showMovieSerie: false,
-    serieBtns: true,
-    categorieBtns: false,
-    collectionBoll:true,
-  });
-
   const location = useLocation();
   useEffect(() => {
     switch (location.pathname) {
@@ -72,15 +54,7 @@ const Main = () => {
         setOption(apiRequest("GET", `https://api.themoviedb.org/3/tv/94997`));
 
         setSerie({
-          textos: dados,
           img: apiImageUrl(dados?.backdrop_path),
-        });
-        setComponents({
-          movieOrSerie: false,
-          showMovieSerie: false,
-          serieBtns: false,
-          categorieBtns: true,
-          collectionBoll:true,
         });
         return;
       }
@@ -89,33 +63,17 @@ const Main = () => {
         setOption(apiRequest("GET", "https://api.themoviedb.org/3/tv/94954"));
 
         setSerie({
-          textos: dados,
           img: apiImageUrl(dados?.backdrop_path),
-        });
-        setComponents({
-          movieOrSerie: true,
-          showMovieSerie: true,
-          serieBtns: false,
-          categorieBtns: true,
-          collectionBoll:true
         });
         return;
       }
 
       case "/home/movie": {
-        setOption(apiRequest("GET", `https://api.themoviedb.org/3/tv/76479'`));
+        
+        setOption(apiRequest("GET", `https://api.themoviedb.org/3/movie/573435'`));
 
         setSerie({
-          textos: dados,
           img: apiImageUrl(dados?.backdrop_path),
-        });
-
-        setComponents({
-          movieOrSerie: false,
-          showMovieSerie: true,
-          serieBtns: false,
-          categorieBtns: true,
-          collectionBoll:true
         });
         return;
       }
@@ -123,15 +81,7 @@ const Main = () => {
         setOption(apiRequest("GET", `https://api.themoviedb.org/3/tv/235484'`));
 
         setSerie({
-          textos: dados,
           img: apiImageUrl(dados?.backdrop_path),
-        });
-        setComponents({
-          movieOrSerie: false,
-          showMovieSerie: false,
-          serieBtns: false,
-          categorieBtns: true,
-          collectionBoll:true
         });
         return;
       }
@@ -140,15 +90,7 @@ const Main = () => {
           apiRequest("GET", `https://api.themoviedb.org/3/tv/${SerieID.id}`)
         );
         setSerie({
-          textos: dados,
           img: apiImageUrl(dados?.backdrop_path),
-        });
-        setComponents({
-          movieOrSerie: false,
-          showMovieSerie: false,
-          serieBtns: true,
-          categorieBtns: false,
-          collectionBoll:true
         });
         return;
       }
@@ -160,47 +102,42 @@ const Main = () => {
           )
         );
         setSerie({
-          textos: dados,
           img: apiImageUrl(dados?.backdrop_path),
         });
-        setComponents({
-          movieOrSerie: false,
-          showMovieSerie: false,
-          serieBtns: false,
-          categorieBtns: false,
-          collectionBoll:false
+        return;
+      }
+      case `/home/movie/${SerieID.id}`: {
+        setOption(
+          apiRequest(
+            "GET",
+            `https://api.themoviedb.org/3/movie/${SerieID.id}`
+          )
+        );
+        setSerie({
+          img: apiImageUrl(dados?.backdrop_path),
         });
         return;
       }
     }
-  }, [location.pathname,SerieID, dados]);
+  }, [location.pathname, SerieID, dados]);
 
   return (
     <div className="">
       <div
-        className={" bg-no-repeat  bg-cover flex flex-col justify-between"}
+        className={
+          " bg-no-repeat h-screen bg-cover flex flex-col justify-between pb-11 "
+        }
         style={{ backgroundImage: `url(${serie?.img})` }}
       >
-        <div className="image-bg-container">
-          <Header />
-          {components.showMovieSerie && (
-            <SerieMovieTitle
-              serie={serie?.textos}
-              children={components.movieOrSerie ? "Séries" : "Filmes"}
-            />
-          )}
-          <HomeHeader
+        <Header />
+        {/* <SerieMovieTitle
             serie={serie?.textos}
-            categorieBtns={components.categorieBtns}
-            serieBtns={components.serieBtns}
-            collectionsBoll={components.collectionBoll}
-          />
-        </div>
-      </div>
-      <div className=" bg-neutral-600">
+            children={components.movieOrSerie ? "Séries" : "Filmes"}
+          /> */}
         <Outlet />
+        
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };

@@ -6,7 +6,7 @@ interface ApiResponse<T> {
   data: T;
 }
 
-const useApi = <T = unknown>(options: OptionsType) => {
+const useApi = <T>(options: OptionsType) => {
   const [dados, setDados] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<AxiosError | null>(null);

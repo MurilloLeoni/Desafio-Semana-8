@@ -14,6 +14,7 @@ import Celebrity from "./pages/main/celebrity-component/Celebrity";
 import SerieFilho from "./pages/main/serie-component/SerieFilho";
 import VideoPlayer from "./components/VideoPlayer";
 import Collections from "./pages/main/Collections/Collections";
+import MovieFilho from "./pages/main/movie-component/MovieFilho";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="celebrity" element={<Celebrity />} />
           <Route path="serie/:id" element={<SerieFilho />} />
           <Route path="collection/:id" element={<Collections/>}/>
+          <Route path="movie/:id" element={<MovieFilho/>}/>
         </Route>
         <Route path="/player" element={<VideoPlayer />} />
       </Routes>
