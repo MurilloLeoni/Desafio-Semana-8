@@ -24,6 +24,13 @@ const handleClick = () =>{
     });
   }
 
+  const handleClickGuest = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      window.location.href = 'http://localhost:5173/home';
+    }, 1000);
+  }
+
   if (isLoading) {
     return <Loader />;
   }
@@ -42,7 +49,7 @@ const handleClick = () =>{
         </button>
         <div className="flex body-small">
           <p className="opacity-60">Não tem conta?</p>
-          <a href="#" className="ml-1">
+          <a onClick={handleClickGuest} className="ml-1 cursor-pointer">
             Acesse como convidado
           </a>
         </div>

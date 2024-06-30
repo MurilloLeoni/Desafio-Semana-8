@@ -134,8 +134,7 @@ const Main = () => {
             serie={serie?.textos}
             children={components.movieOrSerie ? "Séries" : "Filmes"}
           /> */}
-        <Outlet />
-        
+        <Outlet />        
         <Footer />
       </div>
     </div>
