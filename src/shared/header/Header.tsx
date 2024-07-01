@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/img/compass-uol.png";
 import IconHome from '../../components/icons/IconHome';
 import IconTv from '../../components/icons/IconTv';
@@ -18,7 +18,18 @@ const Header: React.FC = () => {
 	const [searchOpen, setSearchOpen] = useState(false);
 	const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 	const [searchDropdownOpen, setSearchDropdownOpen] = useState(false);
+	const [search, setSearch] = useState("")
 	const location = useLocation();
+	const navigate = useNavigate();
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		// console.log(search)
+		if(!search) return
+		
+		navigate(`/search?q=${search}`)
+		
+	}
 
 	React.useEffect(() => {
 		// console.log("Mudou a rota");
@@ -108,11 +119,17 @@ const Header: React.FC = () => {
 							</nav>
 						) : (
 							<div className="relative gap-y-4 w-[302px] md:w-[450px] h-[102px] md:h-[67px] px-4 py-3 bg-neutral-700 rounded border border-neutral-400 justify-center items-start md:items-center flex flex-col md:flex-row">
-								<input
+								<form onSubmit={handleSubmit}>
+								<input									
 									type="text"
 									className="bg-neutral-700 text-white text-base font-normal body-review min-w-56"
 									placeholder="Filme, série ou celebridade"
+									onChange={(e) => setSearch(e.target.value)}
+									value={search}
 								/>
+								<button className="text-transparent absolute ml-[125px] w-4" type="submit">a
+								</button>
+								</form>
 								<div className="justify-end items-center gap-3 flex">
 									<SearchDropdown isOpen={searchDropdownOpen} toggleDropdown={toggleSearchDropdown} closeDropdown={closeSearchDropdown} />
 									<button className="text-white" onClick={toggleSearch}>

@@ -11,7 +11,6 @@ type UserDropdownProps = {
 const UserDropdown: React.FC<UserDropdownProps> = ({ isOpen, toggleDropdown, closeDropdown }) => {
    const dropdownRef = useRef<HTMLDivElement>(null);
 const Loggout = () =>{
-   console.log("saindo...")
    window.localStorage.clear();
    window.location.href = 'http://localhost:5173';
 }
