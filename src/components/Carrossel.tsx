@@ -10,7 +10,7 @@ import { apiImageUrl } from "../shared/API/Config/Config";
 import semImg from "../assets/img/sem-img.jpg";
 
 type carrosselType = {
-  data: carrossel[] | null;
+  data: carrossel[] | null | undefined;
   redirectCollection: React.MouseEvent<HTMLElement>;
 };
 
@@ -21,8 +21,10 @@ interface carrossel {
 
 const Carrossel = ({ data, redirectCollection }: carrosselType) => {
   function pages(): number | undefined {
-    if (data?.length <= 7) {
-      return data?.length;
+    if (data){
+      if (data.length <= 7) {
+        return data?.length;
+      }
     }
     return 7;
   }

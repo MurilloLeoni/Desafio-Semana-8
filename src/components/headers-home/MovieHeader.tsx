@@ -14,7 +14,7 @@ interface Movie{
 
 }
 type movieTipe={
-    data:Movie
+    data:Movie | undefined
     movieCategorie:boolean
 
 }
@@ -32,7 +32,7 @@ const MovieHeader = ({data,movieCategorie}:movieTipe) => {
           </span>
           {data?.runtime} Minutes
         </span>
-        <p className="text-white caption flex flex-row">{data?.genres.map((genre) =>(<p>{genre.name}, </p>))}</p>
+        <p className="text-white caption flex flex-row">{data?.genres.map((genre) =>(<div key={genre.id}> <span>{genre.name}</span>, </div>))}</p>
         {movieCategorie && <ButtonArea data={data} />}
         
         <p className="body-large text-white">{data?.overview}</p>

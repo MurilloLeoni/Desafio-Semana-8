@@ -5,14 +5,14 @@ import { apiImageUrl, apiRequest } from "../../../shared/API/Config/Config";
 import Carrossel from "../../../components/Carrossel";
 
 const Celebrity = () => {
-  const headerOpt = apiRequest("GET", `https://api.themoviedb.org/3/tv/94997`);
+  const headerOpt = apiRequest("GET", `https://api.themoviedb.org/3/tv/235484`);
   const [headerSerie, setHeaderSerie] = useState();
   const [carrossel, setCarrossel] = useState([])
   useEffect(() => {
     axios
       .request(headerOpt)
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         setHeaderSerie(response.data);
       })
       .catch(function (error) {

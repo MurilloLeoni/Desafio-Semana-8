@@ -12,9 +12,10 @@ import Serie from "./pages/main/serie-component/Serie";
 import Celebrity from "./pages/main/celebrity-component/Celebrity";
 // import Tvshow from "./components/Tvshow";
 import SerieFilho from "./pages/main/serie-component/SerieFilho";
-import VideoPlayer from "./components/VideoPlayer";
+import VideoPlayer from "./components/Player/VideoPlayer";
 import Collections from "./pages/main/Collections/Collections";
 import MovieFilho from "./pages/main/movie-component/MovieFilho";
+import Tvshow from "./components/Tvshow";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="serie" element={<Serie />} />
           <Route path="celebrity" element={<Celebrity />} />
           <Route path="serie/:id" element={<SerieFilho />} />
+          <Route path="serie/:id/:season_number" element={<Tvshow/>} />
           <Route path="collection/:id" element={<Collections/>}/>
           <Route path="movie/:id" element={<MovieFilho/>}/>
         </Route>

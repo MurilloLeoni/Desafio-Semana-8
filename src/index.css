@@ -29,6 +29,9 @@
 .body-review {
   @apply font-montserrat font-normal text-[16px];
 }
+.body-review-bold {
+  @apply font-montserrat font-bold text-[16px];
+}
 
 .body-small {
   @apply font-montserrat font-normal text-[14px];
