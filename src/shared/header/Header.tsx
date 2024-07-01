@@ -127,7 +127,7 @@ const Header: React.FC = () => {
 									onChange={(e) => setSearch(e.target.value)}
 									value={search}
 								/>
-								<button className="text-transparent absolute ml-[125px] w-4" type="submit">a
+								<button className="text-transparent absolute ml-[125px] w-4" type="submit">.
 								</button>
 								</form>
 								<div className="justify-end items-center gap-3 flex">
