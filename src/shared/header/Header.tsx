@@ -16,14 +16,14 @@ const Header: React.FC = () => {
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [searchDropdownOpen, setSearchDropdownOpen] = useState(false);
   const [search, setSearch] = useState("");
-  const [selectedOption, setSelectedOption] = useState<string>('all'); // Estado para a opção selecionada em inglês
+  const [selectedOption, setSelectedOption] = useState<string>('multi');
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!search) return;
-    navigate(`/search?q=${search}&type=${selectedOption}`); // Inclui a opção selecionada na URL
+    navigate(`/search?q=${search}&type=${selectedOption}`);
   };
 
   const linkStyle = ({ isActive }: { isActive: boolean }) =>
@@ -104,7 +104,7 @@ const Header: React.FC = () => {
                     isOpen={searchDropdownOpen} 
                     toggleDropdown={() => setSearchDropdownOpen(!searchDropdownOpen)} 
                     closeDropdown={() => setSearchDropdownOpen(false)}
-                    onSelectOption={(option) => setSelectedOption(option)} // Atualiza a opção selecionada
+                    onSelectOption={(option) => setSelectedOption(option)}
                   />
                   <button className="text-white" onClick={() => setSearchOpen(!searchOpen)}>
                     <IconSearch className="w-6 h-6" />

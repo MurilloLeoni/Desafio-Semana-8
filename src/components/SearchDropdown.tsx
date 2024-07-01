@@ -7,7 +7,7 @@ type SearchDropdownProps = {
   onSelectOption: (option: OptionType) => void;
 };
 
-const OPTIONS = ['all', 'movie', 'tv', 'celebrity', 'collection'] as const;
+const OPTIONS = ['multi', 'movie', 'tv', 'person', 'collection'] as const;
 type OptionType = (typeof OPTIONS)[number];
 const OPTIONS_PT = ['Tudo', 'Filmes', 'Séries', 'Celebridades', 'Coleções'] as const;
 type OptionPTType = (typeof OPTIONS_PT)[number];
@@ -16,11 +16,11 @@ const removeAccents = (str: string) =>
   str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
 const OPTION_MAPPING: Record<string, OptionType> = {
-  Tudo: 'all',
+  Tudo: 'multi',
   Filmes: 'movie',
-  Series: 'tv', // "Séries" sem acento
-  Celebridades: 'celebrity',
-  Colecoes: 'collection' // "Coleções" sem acento
+  Series: 'tv',
+  Celebridades: 'person',
+  Colecoes: 'collection'
 };
 
 const SearchDropdown: React.FC<SearchDropdownProps> = ({ isOpen, toggleDropdown, closeDropdown, onSelectOption }) => {
