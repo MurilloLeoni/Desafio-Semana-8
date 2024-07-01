@@ -1,75 +1,116 @@
-import React, {useState} from 'react'
-import Carrossel from '../components/Carrossel'
-import Header from '../shared/header/Header'
+import React, { useEffect, useState } from 'react';
+import Carrossel from '../components/Carrossel';
+import Header from '../shared/header/Header';
+import axios from 'axios';
+
+interface Carrossel {
+  id: string;
+  poster_path: string;
+}
 
 const User_Account = () => {
-    const [filmesFavoritos, setFilmesFavoritos] = useState([])
-    const [seriesFavoritas, setSeriesFavoritas] = useState([])
-    const [filmesVerDepois, setFilmesVerDepois] = useState([])
-    const [seriesVerDepois, setSeriesVerDepois] = useState([])
+  const [filmesFavoritos, setFilmesFavoritos] = useState<Carrossel[]>([]);
+  const [seriesFavoritas, setSeriesFavoritas] = useState<Carrossel[]>([]);
+  const [filmesVerDepois, setFilmesVerDepois] = useState<Carrossel[]>([]);
+  const [seriesVerDepois, setSeriesVerDepois] = useState<Carrossel[]>([]);
+  const sessionId = localStorage.getItem('sessionId');
 
-    const isEmpty: boolean =
+  const fetchList = async (url: string, stateUpdater: React.Dispatch<React.SetStateAction<Carrossel[]>>) => {
+    try {
+      const response = await axios.get(url, {
+        params: {
+          language: 'en-US',
+          page: '1',
+          session_id: sessionId,
+          sort_by: 'created_at.asc'
+        },
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTQzNzk0M2M5YWFhODcxMDhjNmViNzk4OWZkMTg0MCIsIm5iZiI6MTcxOTI2OTM5My4xMTgzNTIsInN1YiI6IjY2NzlmNjliYjUxYzg4MzU5NTNiNDAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.B68cDtxz79f0-7mmzUdbWn9pdXzNw_9T7JvTHVXrF-I'
+        }
+      });
+      stateUpdater(response.data.results);
+    } catch (error) {
+      console.error(`Erro ao buscar ${url}:`, error);
+    }
+  };
+
+  useEffect(() => {
+    if (sessionId) {
+      fetchList('https://api.themoviedb.org/3/account/21349506/favorite/movies', setFilmesFavoritos);
+      fetchList('https://api.themoviedb.org/3/account/21349506/favorite/tv', setSeriesFavoritas);
+      fetchList('https://api.themoviedb.org/3/account/21349506/watchlist/movies', setFilmesVerDepois);
+      fetchList('https://api.themoviedb.org/3/account/21349506/watchlist/tv', setSeriesVerDepois);
+    } else {
+      console.error('sessionId não encontrado no localStorage');
+    }
+  }, [sessionId]);
+
+  const isEmpty =
     filmesFavoritos.length === 0 &&
     seriesFavoritas.length === 0 &&
     filmesVerDepois.length === 0 &&
     seriesVerDepois.length === 0;
 
   return (
-  <div className='h-screen bg-neutral-600'>
-    <Header/>
     <div>
-        <div className=' text-white ml-4 md:ml-24'>
-            <h2 className='h2-heading'>Minhas listas</h2>
-            <p className='body-small opacity-60'>Listas criadas por você de acordo com seus gostos</p>
+      {/* <Header /> */}
+    <div className="w-full h-full flex flex-col bg-neutral-600">
+      
+      <div>
+        <div className="text-white ml-4 md:ml-24 w-96">
+          <h2 className="h2-heading">Minhas listas</h2>
+          <p className="body-small opacity-60">Listas criadas por você de acordo com seus gostos</p>
         </div>
-        {isEmpty? (
-            <div>
-            <p className='text-white ml-4 mt-4 md:ml-24 body-review'>
-            Nenhum filme ou série foi adicionado às suas listas. Adicione algo para começar!
-          </p>
+        {isEmpty ? (
+          <div>
+            <p className="text-white ml-4 mt-4 md:ml-24 body-review">
+              Nenhum filme ou série foi adicionado às suas listas. Adicione algo para começar!
+            </p>
           </div>
         ) : (
-            <>
-            {filmesFavoritos.length>0 && (
-                <div className="ml-4 pt-2 pb-11 mt-4 md:ml-24">
-                <div className="flex flex-col gap-2">        
-                <h4 className="h4-heading text-white">Filmes favoritos</h4>        
-                <Carrossel/>   
-                </div> 
+          <>
+            {filmesFavoritos.length > 0 && (
+              <div className="ml-4 pt-2 pb-11 mt-4 md:ml-24">
+                <div className="flex flex-col gap-2">
+                  <h4 className="h4-heading text-white">Filmes favoritos</h4>
+                  <Carrossel data={filmesFavoritos} />
                 </div>
+              </div>
             )}
 
-            {seriesFavoritas.length>0 && (
-            <div className="ml-4 pt-2 pb-11 md:ml-24">
-            <div className="flex flex-col gap-2">
-            <h4 className="h4-heading text-white">Séries favoritas</h4>
-            <Carrossel/>
-            </div>
-            </div>    
+            {seriesFavoritas.length > 0 && (
+              <div className="ml-4 pt-2 pb-11 md:ml-24">
+                <div className="flex flex-col gap-2">
+                  <h4 className="h4-heading text-white">Séries favoritas</h4>
+                  <Carrossel data={seriesFavoritas} />
+                </div>
+              </div>
             )}
 
-            {filmesVerDepois.length>0 && (
-            <div className="ml-4 pt-2 pb-11 md:ml-24">
-            <div className="flex flex-col gap-2">
-            <h4 className="h4-heading text-white">Filmes para ver mais tarde</h4>
-            <Carrossel/>
-            </div>
-            </div>    
+            {filmesVerDepois.length > 0 && (
+              <div className="ml-4 pt-2 pb-11 md:ml-24">
+                <div className="flex flex-col gap-2">
+                  <h4 className="h4-heading text-white">Filmes para ver mais tarde</h4>
+                  <Carrossel data={filmesVerDepois} />
+                </div>
+              </div>
             )}
 
-            {seriesVerDepois.length>0 && (
-            <div className="ml-4 pt-2 pb-11 md:ml-24">
-            <div className="flex flex-col gap-2">
-            <h4 className="h4-heading text-white">Séries para ver mais tarde</h4>
-            <Carrossel/>
-            </div>
-            </div>    
+            {seriesVerDepois.length > 0 && (
+              <div className="ml-4 pt-2 pb-11 md:ml-24">
+                <div className="flex flex-col gap-2">
+                  <h4 className="h4-heading text-white">Séries para ver mais tarde</h4>
+                  <Carrossel data={seriesVerDepois} />
+                </div>
+              </div>
             )}
-            </>
-        )}      
+          </>
+        )}
+      </div>
     </div>
     </div>
-  )
-}
+  );
+};
 
-export default User_Account
+export default User_Account;

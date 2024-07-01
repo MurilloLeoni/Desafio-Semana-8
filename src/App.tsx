@@ -16,6 +16,7 @@ import VideoPlayer from "./components/VideoPlayer";
 import Collections from "./pages/main/Collections/Collections";
 import MovieFilho from "./pages/main/movie-component/MovieFilho";
 import Search from "./pages/Search";
+import User_Account from "./pages/User_Account";
 
 function App() {
   return (
@@ -30,10 +31,13 @@ function App() {
           <Route path="celebrity" element={<Celebrity />} />
           <Route path="serie/:id" element={<SerieFilho />} />
           <Route path="collection/:id" element={<Collections/>}/>
-          <Route path="movie/:id" element={<MovieFilho/>}/>  
+          <Route path="movie/:id" element={<MovieFilho/>}/>
+          <Route path="mylist" element={<User_Account />} />    
         </Route>
+        
         <Route path="/search" element={<Search />} />   
         <Route path="/player" element={<VideoPlayer />} />
+        
       </Routes>
 
       {/* <Routes>

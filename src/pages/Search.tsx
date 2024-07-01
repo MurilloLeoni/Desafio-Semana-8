@@ -17,17 +17,15 @@ interface carrossel {
 const Search = () => {
     const [searchParams] = useSearchParams();
     const query = searchParams.get("q");
-    const [carrossel, setCarrossel] = useState<carrossel[]>();
+    const [carrossel, setCarrossel] = useState<carrossel[]>([]);
   
     useEffect(() => {
       const getSearchedMovies = async (url: string) => {
         try {
-          // Configurando a requisição usando apiRequest
           const requestConfig = apiRequest('GET', url);
           
-          // Fazendo a requisição usando axios
           const response = await axios.request(requestConfig);
-          console.log(response.data);
+          //console.log(response.data);
           setCarrossel(response.data.results)
         } catch (error) {
           console.error("Erro ao buscar filmes:", error);
@@ -45,13 +43,17 @@ const Search = () => {
       <Header />
       <div className="flex-grow flex flex-col ml-[78px] mt-16 h3-heading text-white">
         <h2>
-          <span className="opacity-60">Resultados para sua busca: </span>
-          <span>{query}</span>
+          <span className="h3-heading-normal">Resultados para sua busca: </span>
+          <span className="">"{query}"</span>
         </h2>      
         <div className="mt-6">
+        {carrossel.length > 0 ? (
             <div>
-              <Carrossel data={carrossel}/>{" "}
+              <Carrossel data={carrossel} />{" "}
             </div>
+          ) : (
+            <p className="text-white body-review opacity-60">Sem resultados</p>
+          )}
         </div>
       </div>
       <div className="mt-28">

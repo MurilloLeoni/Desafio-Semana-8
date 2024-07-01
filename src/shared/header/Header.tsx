@@ -63,7 +63,7 @@ const Header: React.FC = () => {
 
 
 	return (
-		<header className="w-screen xl:h-[100.46px] sm:px-8 py-4 bg-gradient-to-b from-neutral-950 to-neutral-0 justify-between items-center inline-flex">
+		<header className="w-full xl:h-[100.46px] sm:px-8 py-4 bg-gradient-to-b from-neutral-950 to-neutral-0 justify-between items-center inline-flex">
 			<div className={`flex xl:flex-row flex-col items-center w-full ${searchOpen ? 'gap-6 lg:gap-0' : ''}`}>
 				<div className={`relative py-4 flex justify-start ${searchOpen ? 'w-[350px] md:w-auto  gap-6 lg:gap-0' : ''}`}>
 					<img src={logo} alt="Logo" className="w-[200px] h-[68.46px] " />
@@ -112,7 +112,7 @@ const Header: React.FC = () => {
 									<IconSearch className="w-6 h-6" />
 									<p>Buscar</p>
 								</button>
-								<NavLink to="" className={searchStyle}>
+								<NavLink to="/home/mylist" className={searchStyle}>
 									<IconPlus className="w-6 h-6" />
 									<p>Minha lista</p>
 								</NavLink>
@@ -127,7 +127,7 @@ const Header: React.FC = () => {
 									onChange={(e) => setSearch(e.target.value)}
 									value={search}
 								/>
-								<button className="text-transparent absolute ml-[125px] w-4" type="submit">.
+								<button className="text-transparent absolute mt-[50px] -ml-[99px] md:ml-[125px] md:-mt-0 w-4" type="submit">.
 								</button>
 								</form>
 								<div className="justify-end items-center gap-3 flex">

@@ -1,8 +1,20 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ButtonClicked from "../Buttons/ButtonClicked";
+import addFavorite from "../../shared/AddFav";
 type btn ={
   data:any
 }
+
+// const url = window.location.href;
+// const regex = /\/(\d+)$/;
+// const match = url.match(regex);
+// if (match) {
+//   const numbers = match[1];
+//   const SerieID = numbers;
+// } else {
+//   console.log('Números finais não encontrados na URL.');
+// }
+
 const ButtonArea = ({data}:btn) => {
   const navigate = useNavigate()
   const redirect = ()=>{
@@ -10,6 +22,7 @@ const ButtonArea = ({data}:btn) => {
       navigate(`/player?title=${data.original_name}&time=${data.number_of_seasons}`)
     }
   }
+
   return (
     <div>
       <div className="flex flex-wrap gap-6  grid-cols-2">
