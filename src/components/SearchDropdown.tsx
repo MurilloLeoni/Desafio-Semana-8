@@ -7,21 +7,25 @@ type SearchDropdownProps = {
   onSelectOption: (option: OptionType) => void;
 };
 
-const options = ['all', 'movie', 'tv', 'celebrity'] as const;
-type OptionType = (typeof options)[number];
-const options2 = ['Tudo', 'Filmes', 'Séries', 'Celebridades'] as const;
-type Option2Type = (typeof options2)[number];
+const OPTIONS = ['all', 'movie', 'tv', 'celebrity', 'collection'] as const;
+type OptionType = (typeof OPTIONS)[number];
+const OPTIONS_PT = ['Tudo', 'Filmes', 'Séries', 'Celebridades', 'Coleções'] as const;
+type OptionPTType = (typeof OPTIONS_PT)[number];
 
-const optionMapping: Record<Option2Type, OptionType> = {
+const removeAccents = (str: string) =>
+  str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+const OPTION_MAPPING: Record<string, OptionType> = {
   Tudo: 'all',
   Filmes: 'movie',
-  Séries: 'tv',
-  Celebridades: 'celebrity'
+  Series: 'tv', // "Séries" sem acento
+  Celebridades: 'celebrity',
+  Colecoes: 'collection' // "Coleções" sem acento
 };
 
 const SearchDropdown: React.FC<SearchDropdownProps> = ({ isOpen, toggleDropdown, closeDropdown, onSelectOption }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const [selectedOption, setSelectedOption] = useState<Option2Type>('Tudo');
+  const [selectedOption, setSelectedOption] = useState<OptionPTType>('Tudo');
 
   const linkStyle = "text-start block px-6 w-full py-2 hover:bg-white rounded-md button-text";
 
@@ -40,9 +44,10 @@ const SearchDropdown: React.FC<SearchDropdownProps> = ({ isOpen, toggleDropdown,
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen, handleClickOutside]);
 
-  const handleOptionClick = (option: Option2Type) => {
+  const handleOptionClick = (option: OptionPTType) => {
     setSelectedOption(option);
-    onSelectOption(optionMapping[option]); // Passa a opção em inglês para o componente pai
+    const optionKey = removeAccents(option);
+    onSelectOption(OPTION_MAPPING[optionKey]);
     closeDropdown();
   };
 
@@ -55,7 +60,7 @@ const SearchDropdown: React.FC<SearchDropdownProps> = ({ isOpen, toggleDropdown,
       {isOpen && (
         <div className="absolute left-1/2 transform -translate-x-1/2 mt-3 w-[196px] bg-[#F3F5FB] border border-gray-200 rounded-lg shadow-lg z-10">
           <div className="text-indigo-950 font-[600] p-2 max-h-[216px] overflow-auto">
-            {options2.map(option => (
+            {OPTIONS_PT.map(option => (
               <button key={option} className={linkStyle} onClick={() => handleOptionClick(option)}>{option}</button>
             ))}
           </div>

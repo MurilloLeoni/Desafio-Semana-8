@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Header from "../shared/header/Header";
 import Footer from "../shared/footer/Footer";
 import { apiRequest } from "../shared/API/Config/Config";
@@ -15,11 +15,13 @@ interface MediaItem {
   poster_path: string;
 }
 
+
 const Search = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
   const type = searchParams.get("type");
   const [results, setResults] = useState<MediaItem[]>([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getSearchedItems = async (url: string) => {
@@ -38,6 +40,10 @@ const Search = () => {
     }
   }, [query, type]);
 
+  const handleFilmes = (id: string) => {
+    navigate(`/home/movie/${id}`);
+  };
+
   return (
     <div className="w-screen h-screen flex flex-col bg-neutral-600">
       <Header />
@@ -48,7 +54,7 @@ const Search = () => {
         </h2>      
         <div className="mt-6">
           <div>
-            <Carrossel data={results} />
+          <Carrossel data={results} redirectCollection={handleFilmes} />
           </div>
         </div>
       </div>
