@@ -15,6 +15,7 @@ import SerieFilho from "./pages/main/serie-component/SerieFilho";
 import VideoPlayer from "./components/Player/VideoPlayer";
 import Collections from "./pages/main/Collections/Collections";
 import MovieFilho from "./pages/main/movie-component/MovieFilho";
+import Search from "./pages/Search";
 import Tvshow from "./components/Tvshow";
 
 function App() {
@@ -31,8 +32,9 @@ function App() {
           <Route path="serie/:id" element={<SerieFilho />} />
           <Route path="serie/:id/:season_number" element={<Tvshow/>} />
           <Route path="collection/:id" element={<Collections/>}/>
-          <Route path="movie/:id" element={<MovieFilho/>}/>
+          <Route path="movie/:id" element={<MovieFilho/>}/>  
         </Route>
+        <Route path="/search" element={<Search />} />   
         <Route path="/player" element={<VideoPlayer />} />
       </Routes>
 

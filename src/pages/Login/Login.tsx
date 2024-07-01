@@ -1,35 +1,42 @@
-import { useNavigate , redirectDocument, useParams, useLocation  } from "react-router-dom";
 import { apiRequest } from "../../shared/API/Config/Config";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
+import Loader from "../../components/Loader";
 
 const Login = () => {
-  const navigate = useLocation()
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   
- console.log(navigate)
-//  console.log(redirectDocument)
- 
-  // href={https://www.themoviedb.org/authenticate/${requestTk?.request_token}?redirect_to=http://localhost:5173/home}
 const handleClick = () =>{
- const option = apiRequest("GET","https://api.themoviedb.org/3/authentication/token/new")
- axios
+  setIsLoading(true);
+  const option = apiRequest("GET","https://api.themoviedb.org/3/authentication/token/new")
+  
+  axios
     .request(option)
     .then(function (response) {
       // console.log(response.data)
-      
-      window.location.href=`https://www.themoviedb.org/authenticate/${response.data.request_token}?redirect_to=http://localhost:5173/home`   
+      window.localStorage.setItem("loginMethod", "tmdb");
       window.localStorage.setItem("token",response.data.request_token)
+      window.location.href=`https://www.themoviedb.org/authenticate/${response.data.request_token}?redirect_to=http://localhost:5173/home`   
  })
     .catch(function (error) {
       console.error(error);
+      setIsLoading(false);
     });
-    // navigate("/home")
-
   }
 
+  const handleClickGuest = () => {    
+        setIsLoading(true);
+        
+        setTimeout(() => {
+          window.location.href='http://localhost:5173/home'
+          window.localStorage.setItem("loginMethod", "guest");
+      }, 1000);
+      
+  }
 
-
-
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-[url('src/assets/img/bg-login.png')] bg-cover bg-center">
@@ -45,7 +52,7 @@ const handleClick = () =>{
         </button>
         <div className="flex body-small">
           <p className="opacity-60">Não tem conta?</p>
-          <a href="#" className="ml-1">
+          <a onClick={handleClickGuest} className="ml-1 cursor-pointer">
             Acesse como convidado
           </a>
         </div>

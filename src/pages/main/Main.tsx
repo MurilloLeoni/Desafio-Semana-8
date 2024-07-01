@@ -26,7 +26,11 @@ const Main = () => {
  
 
   useEffect(() => {
-    const options = {
+    const loginMethod: string | null = window.localStorage.getItem("loginMethod");
+
+    if (loginMethod === "tmdb"){
+      const storage: string | null = window.localStorage.getItem("token");
+      const options = {
       method: "POST",
       url: "https://api.themoviedb.org/3/authentication/session/new",
       headers: {
@@ -47,6 +51,26 @@ const Main = () => {
       .catch(function (error) {
         console.error(error);
       });
+    } else if (loginMethod === "guest") {
+      const options = {
+        method: 'GET',
+        url: 'https://api.themoviedb.org/3/authentication/guest_session/new',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTQzNzk0M2M5YWFhODcxMDhjNmViNzk4OWZkMTg0MCIsIm5iZiI6MTcxOTYwNjUxMi4wOTc2MjEsInN1YiI6IjY2NzlmNjliYjUxYzg4MzU5NTNiNDAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eiL73ROy94HbKkXvaRV_mLrna-JL8FjT0UyhZZkiYck'
+        }
+      };
+      
+      axios
+        .request(options)
+        .then(function (response) {
+          //console.log(response.data);
+            window.localStorage.setItem("guestId", response.data.guest_session_id);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+      }
   }, []);
 
   const [serie, setSerie] = useState<apiTeste | null>();
@@ -187,6 +211,11 @@ const Main = () => {
         style={{ backgroundImage: `url(${serie?.img})` }}
       >
         <Header />
+        {/* <SerieMovieTitle
+            serie={serie?.textos}
+            children={components.movieOrSerie ? "Séries" : "Filmes"}
+          /> */}
+        <Outlet />        
         {components?.showMovieOrSerie && <SerieMovieTitle
             serie={serie?.texto}
             children={components?.movieOrSerie ? "Séries" : "Filmes"}

@@ -11,7 +11,7 @@ body {
     width: 80px;
     height: 80px;
     animation: rotate 1s linear infinite;
-    background-image: url('/src/assets/load1.png');
+    background-image: url('/src/assets/img/load1.png');
 }
 
 @keyframes rotate {

@@ -2,7 +2,7 @@ const Player = () => {
   return (
     <div>
         <video className="w-screen h-screen object-cover" autoPlay loop muted>
-        <source src="/src/assets/videos/teste.mp4" type="video/mp4"/>
+        <source src="" type="video/mp4"/>
         </video>
         <div className='mt-8 w-[261px] h-16 ml-6 gap-6 flex items-center justify-center absolute top-0'>
         <img className='w-12 h-12 cursor-pointer' src="/src/assets/icons/sair-player.png" alt="Sair player" />
