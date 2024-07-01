@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import ButtonClicked from "../Buttons/ButtonClicked";
 type btn ={
-  data:any
+  data:any;
+  seccondButton:string
+  icon:boolean
 }
-const ButtonArea = ({data}:btn) => {
+const ButtonArea = ({data,seccondButton,icon}:btn) => {
   const navigate = useNavigate()
   const redirect = ()=>{
     if(data){
@@ -19,8 +21,8 @@ const ButtonArea = ({data}:btn) => {
           </button>
 
           <button className="button-text col-span-2    border  border-white rounded-sm px-6 py-2 text-white flex items-center gap-3 hover:bg-opacity-white-10 bg-opacity-black-10 ">
-            <i className="fa-solid fa-circle-info  "></i>
-            {"MAIS INFORMAÇÕES"}
+            {icon && <i className="fa-solid fa-circle-info  "></i>}
+            {seccondButton}
           </button>
 
           <div className="flex gap-6">

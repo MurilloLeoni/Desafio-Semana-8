@@ -5,7 +5,7 @@ import axios from "axios"
 import serie from "../../../shared/API/Model/Serie"
 import { useNavigate, useParams } from "react-router-dom"
 import semImg from "../../../assets/img/sem-img.jpg"
-import HomeHeader from "../../../HomeHeader"
+import HomeHeader from "../../../components/headers-home/HomeHeader"
 
 interface carrossel {
   id: string;

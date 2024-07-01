@@ -33,10 +33,10 @@ const MovieHeader = ({data,movieCategorie}:movieTipe) => {
           {data?.runtime} Minutes
         </span>
         <p className="text-white caption flex flex-row">{data?.genres.map((genre) =>(<div key={genre.id}> <span>{genre.name}</span>, </div>))}</p>
-        {movieCategorie && <ButtonArea data={data} />}
+        {movieCategorie && <ButtonArea data={data} icon={false} seccondButton="TRAILER"/>}
         
         <p className="body-large text-white">{data?.overview}</p>
-        {!movieCategorie && <ButtonArea data={data} />}
+        {!movieCategorie && <ButtonArea data={data} seccondButton="MAIS INFORMAÇÕES" icon={true}/>}
       </div>
     </div>
     </div>

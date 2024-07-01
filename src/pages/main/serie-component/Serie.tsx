@@ -1,5 +1,5 @@
 import axios from "axios";
-import HomeHeader from "../../../HomeHeader";
+import HomeHeader from "../../../components/headers-home/HomeHeader";
 import { apiRequest } from "../../../shared/API/Config/Config";
 import useApi from "../../../shared/API/Hooks/useApi";
 import serie from "../../../shared/API/Model/Serie";

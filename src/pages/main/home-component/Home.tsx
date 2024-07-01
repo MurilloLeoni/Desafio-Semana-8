@@ -3,7 +3,7 @@ import Carrossel from "../../../components/Carrossel";
 import { apiRequest } from "../../../shared/API/Config/Config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import HomeHeader from "../../../HomeHeader";
+import HomeHeader from "../../../components/headers-home/HomeHeader";
 interface carrossel {
   id: string;
   poster_path: string;
@@ -78,7 +78,7 @@ const Home = () => {
     axios
       .request(movieOpt)
       .then(function (response) {
-        console.log(response.data.results);
+        // console.log(response.data.results);
         setMovie(response.data.results);
       })
       .catch(function (error) {

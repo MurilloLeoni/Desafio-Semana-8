@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import HomeHeader from "../../../HomeHeader";
+import HomeHeader from "../../../components/headers-home/HomeHeader";
 import axios from "axios";
 import { apiImageUrl, apiRequest } from "../../../shared/API/Config/Config";
 import Carrossel from "../../../components/Carrossel";

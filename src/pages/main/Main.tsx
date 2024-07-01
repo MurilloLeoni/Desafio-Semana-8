@@ -11,8 +11,15 @@ import SerieMovieTitle from "../../components/headers-home/SerieMovieTitle";
 import { useEffect, useState } from "react";
 import { OptionsType } from "../../shared/Types/Types";
 import axios from "axios";
+
 interface apiTeste {
+  texto:serie
   img: string | serie | null;
+}
+
+interface components{
+  movieOrSerie:boolean
+  showMovieOrSerie:boolean
 }
 const Main = () => {
   const storage = window.localStorage.getItem("token");
@@ -44,7 +51,8 @@ const Main = () => {
 
   const [serie, setSerie] = useState<apiTeste | null>();
   const [option, setOption] = useState<OptionsType | undefined>();
-  const { dados } = useApi(option);
+  const [components,setComponents] = useState<components>()
+  const { dados } = useApi<serie>(option);
 
   const SerieID = useParams();
 
@@ -55,8 +63,13 @@ const Main = () => {
         setOption(apiRequest("GET", `https://api.themoviedb.org/3/tv/94997`));
 
         setSerie({
+          texto:dados,
           img: apiImageUrl(dados?.backdrop_path),
         });
+        setComponents({
+          movieOrSerie:false,
+          showMovieOrSerie:false
+        })
         return;
       }
 
@@ -64,8 +77,13 @@ const Main = () => {
         setOption(apiRequest("GET", "https://api.themoviedb.org/3/tv/94954"));
 
         setSerie({
+          texto:dados,
           img: apiImageUrl(dados?.backdrop_path),
         });
+        setComponents({
+          movieOrSerie:true,
+          showMovieOrSerie:true
+        })
         return;
       }
 
@@ -74,14 +92,23 @@ const Main = () => {
         setOption(apiRequest("GET", `https://api.themoviedb.org/3/movie/573435'`));
 
         setSerie({
+          texto:dados,
           img: apiImageUrl(dados?.backdrop_path),
         });
+        setComponents({
+          movieOrSerie:false,
+          showMovieOrSerie:true
+        })
         return;
       }
       case "/home/celebrity": {
         setOption(apiRequest("GET", `https://api.themoviedb.org/3/tv/235484'`));
-
+        setComponents({
+          movieOrSerie:false,
+          showMovieOrSerie:false
+        })
         setSerie({
+          texto:dados,
           img: apiImageUrl(dados?.backdrop_path),
         });
         return;
@@ -90,7 +117,12 @@ const Main = () => {
         setOption(
           apiRequest("GET", `https://api.themoviedb.org/3/tv/${SerieID.id}`)
         );
+        setComponents({
+          movieOrSerie:false,
+          showMovieOrSerie:false
+        })
         setSerie({
+          texto:dados,
           img: apiImageUrl(dados?.backdrop_path),
         });
         return;
@@ -100,8 +132,13 @@ const Main = () => {
           apiRequest("GET", `https://api.themoviedb.org/3/tv/${SerieID.id}`)
         );
         setSerie({
+          texto:dados,
           img: apiImageUrl(dados?.backdrop_path),
         });
+        setComponents({
+          movieOrSerie:false,
+          showMovieOrSerie:false
+        })
         return;
       }
       case `/home/collection/${SerieID.id}`: {
@@ -112,8 +149,13 @@ const Main = () => {
           )
         );
         setSerie({
+          texto:dados,
           img: apiImageUrl(dados?.backdrop_path),
         });
+        setComponents({
+          movieOrSerie:false,
+          showMovieOrSerie:false
+        })
         return;
       }
       case `/home/movie/${SerieID.id}`: {
@@ -124,8 +166,13 @@ const Main = () => {
           )
         );
         setSerie({
+          texto:dados,
           img: apiImageUrl(dados?.backdrop_path),
         });
+        setComponents({
+          movieOrSerie:false,
+          showMovieOrSerie:false
+        })
         return;
       }
     }
@@ -140,10 +187,10 @@ const Main = () => {
         style={{ backgroundImage: `url(${serie?.img})` }}
       >
         <Header />
-        {/* <SerieMovieTitle
-            serie={serie?.textos}
-            children={components.movieOrSerie ? "Séries" : "Filmes"}
-          /> */}
+        {components?.showMovieOrSerie && <SerieMovieTitle
+            serie={serie?.texto}
+            children={components?.movieOrSerie ? "Séries" : "Filmes"}
+          />}
         <Outlet />
         
         <Footer />
