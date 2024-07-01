@@ -2,7 +2,7 @@ import { apiImageUrl } from "../../shared/API/Config/Config";
 import Header from "../../shared/header/Header";
 // import Celebrity from "./celebrity-component/Celebrity";
 import Footer from "../../shared/footer/Footer";
-import { Outlet, useLocation, useParams } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { apiRequest } from "../../shared/API/Config/Config";
 
 import serie from "../../shared/API/Model/Serie";
@@ -16,6 +16,7 @@ interface apiTeste {
 }
 const Main = () => {
   const storage = window.localStorage.getItem("token");
+ 
 
   useEffect(() => {
     const options = {
@@ -94,6 +95,15 @@ const Main = () => {
         });
         return;
       }
+      case `/home/serie/${SerieID.id}/${SerieID.season_number}`: {
+        setOption(
+          apiRequest("GET", `https://api.themoviedb.org/3/tv/${SerieID.id}`)
+        );
+        setSerie({
+          img: apiImageUrl(dados?.backdrop_path),
+        });
+        return;
+      }
       case `/home/collection/${SerieID.id}`: {
         setOption(
           apiRequest(
@@ -119,7 +129,7 @@ const Main = () => {
         return;
       }
     }
-  }, [location.pathname, SerieID, dados]);
+  }, [location.pathname, SerieID, dados,]);
 
   return (
     <div className="">
