@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Header from "../shared/header/Header";
 import Footer from "../shared/footer/Footer";
@@ -16,6 +17,28 @@ interface MediaItem {
 }
 
 const Search = () => {
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get("q");
+    const [carrossel, setCarrossel] = useState<carrossel[]>([]);
+  
+    useEffect(() => {
+      const getSearchedMovies = async (url: string) => {
+        try {
+          const requestConfig = apiRequest('GET', url);
+          
+          const response = await axios.request(requestConfig);
+          //console.log(response.data);
+          setCarrossel(response.data.results)
+        } catch (error) {
+          console.error("Erro ao buscar filmes:", error);
+        }
+      };
+  
+      if (query) {
+        const searchWithQueryURL = `${searchURL}?api_key=${apiKey}&query=${query}`;
+        getSearchedMovies(searchWithQueryURL);
+      }
+    }, [query]);
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
   const type = searchParams.get("type");
@@ -45,9 +68,23 @@ const Search = () => {
 
   return (
     <div className="w-screen h-screen flex flex-col bg-neutral-600">
+      {/* <Header /> */}
+      <div className="flex-grow flex flex-col ml-[78px] mt-16 h3-heading text-white">
       <Header />
       <div className="flex-grow flex flex-col pl-[78px] pt-16 h3-heading text-white">
         <h2>
+          <span className="h3-heading-normal">Resultados para sua busca: </span>
+          <span className="">"{query}"</span>
+        </h2>      
+        <div className="mt-6">
+        {carrossel.length > 0 ? (
+            <div>
+              <Carrossel data={carrossel} />{" "}
+            </div>
+          ) : (
+            <p className="text-white body-review opacity-60">Sem resultados</p>
+          )}
+        </div>
           <span className="opacity-60">Resultados para sua busca: </span>
           <span>{query}</span>
         </h2>
@@ -55,6 +92,8 @@ const Search = () => {
             <Carrossel data={results} redirectCollection={handleFilmes} />
           </div>
       </div>
+      <div className="mt-28">
+      {/* <Footer /> */}
       <div className="pb-11 pt-11">
         
       </div>

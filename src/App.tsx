@@ -31,9 +31,10 @@ function App() {
           <Route path="serie/:id" element={<SerieFilho />} />
           <Route path="serie/:id/:season_number" element={<Tvshow/>} />
           <Route path="collection/:id" element={<Collections/>}/>
-          <Route path="movie/:id" element={<MovieFilho/>}/>  
+          <Route path="movie/:id" element={<MovieFilho/>}/>
+          <Route path="mylist" element={<User_Account />} />
+          <Route path="search" element={<Search />} />  
         </Route>
-        <Route path="/search" element={<Search />} />   
         <Route path="/player" element={<VideoPlayer />} />
       </Routes>
     </BrowserRouter>
