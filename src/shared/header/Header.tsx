@@ -26,9 +26,7 @@ const Header: React.FC = () => {
 		e.preventDefault();
 		// console.log(search)
 		if(!search) return
-		
-		navigate(`/search?q=${search}`)
-		
+		navigate(`/home/search?q=${search}`)
 	}
 
 	React.useEffect(() => {

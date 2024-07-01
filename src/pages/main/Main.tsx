@@ -145,7 +145,7 @@ const Main = () => {
   }, [location.pathname, SerieID, dados]);
 
   return (
-    <div className="">
+    <div>
       <div
         className={
           " bg-no-repeat h-screen bg-cover flex flex-col justify-between pb-11 "

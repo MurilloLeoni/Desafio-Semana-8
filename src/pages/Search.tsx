@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import Header from "../shared/header/Header";
-import Footer from "../shared/footer/Footer";
 import { apiRequest } from "../shared/API/Config/Config";
 import axios from "axios";
 import Carrossel from "../components/Carrossel";
@@ -40,7 +38,7 @@ const Search = () => {
 
   return (
     <div className="w-screen h-screen flex flex-col bg-neutral-600">
-      <Header />
+      {/* <Header /> */}
       <div className="flex-grow flex flex-col ml-[78px] mt-16 h3-heading text-white">
         <h2>
           <span className="h3-heading-normal">Resultados para sua busca: </span>
@@ -57,7 +55,7 @@ const Search = () => {
         </div>
       </div>
       <div className="mt-28">
-      <Footer />
+      {/* <Footer /> */}
       </div>
     </div>
   );
