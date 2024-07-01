@@ -44,7 +44,7 @@ const SerieFilho = () => {
     axios
     .request(similar)
     .then(function (response) {
-      console.log(response.data.results);
+      // console.log(response.data.results);
       setCarrossel(response.data.results)
     })
     .catch(function (error) {

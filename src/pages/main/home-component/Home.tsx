@@ -28,7 +28,7 @@ const Home = () => {
     axios
       .request(serieOptions)
       .then(function (response) {
-        console.log(response.data.results);
+        // console.log(response.data.results);
         setSerie(response.data.results);
       })
       .catch(function (error) {

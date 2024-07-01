@@ -61,7 +61,7 @@ const MovieFilho = () => {
         axios
         .request(options)
         .then(function (response) {
-            console.log(response.data)
+            // console.log(response.data)
             setMovieHeader(response.data)
             
             // console.log(carrosselMov)
@@ -74,7 +74,7 @@ const MovieFilho = () => {
         axios
         .request(similar)
         .then(function (response) {
-          console.log(response.data.results);
+          // console.log(response.data.results);
           setCarrosselMov(response.data.results)
         })
         .catch(function (error) {

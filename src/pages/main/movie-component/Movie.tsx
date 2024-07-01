@@ -36,7 +36,7 @@ const Movie = () => {
   axios
   .request(options)
   .then(function (response) {
-    console.log(response.data);
+    // console.log(response.data);
     setCarrossel(response.data.results)
   })
   .catch(function (error) {
