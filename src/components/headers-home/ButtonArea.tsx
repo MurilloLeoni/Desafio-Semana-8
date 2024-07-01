@@ -17,7 +17,6 @@ type btn ={
 //   console.log('Números finais não encontrados na URL.');
 // }
 
-const ButtonArea = ({data}:btn) => {
 const ButtonArea = ({data,seccondButton,icon}:btn) => {
   const navigate = useNavigate()
   const redirect = ()=>{

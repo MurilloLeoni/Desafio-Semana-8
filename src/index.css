@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  width: 100vw;
+  overflow-x: hidden;
+}
 .h1-heading {
   @apply font-montserrat font-bold text-[44px];
 }

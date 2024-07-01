@@ -5,7 +5,7 @@ import ButtonArea from "./ButtonArea";
 const HomeHeader = ({ serie }: serieProps) => {
 
   return (
-    <div className=" flex flex-col py-40  pb-11 image-bg-container">
+    <div className="flex flex-col py-40  pb-11 image-bg-container">
       <div className="flex flex-col ml-20 gap-5 max-w-[719px]">
         <h1 className="h1-heading text-white">{serie?.original_name}</h1>
         <span className="text-white body-small items-center flex gap-2">

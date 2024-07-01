@@ -205,7 +205,7 @@ const Main = () => {
   return (
     <div
     className={
-      " bg-no-repeat h-screen bg-cover flex flex-col justify-between pb-11 "
+      "w-screen bg-no-repeat h-screen bg-cover flex flex-col justify-between pb-11 "
     }
     style={{ backgroundImage: `url(${serie?.img})` }}
   >
