@@ -82,7 +82,7 @@ const Header: React.FC = () => {
                   <IconSearch className="w-6 h-6" />
                   <p>Buscar</p>
                 </button>
-                <NavLink to="" className={searchStyle}>
+                <NavLink to="/home/mylist" className={searchStyle}>
                   <IconPlus className="w-6 h-6" />
                   <p>Minha lista</p>
                 </NavLink>
