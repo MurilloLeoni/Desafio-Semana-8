@@ -203,28 +203,20 @@ const Main = () => {
   }, [location.pathname, SerieID, dados,]);
 
   return (
-    <div className="">
-      <div
-        className={
-          " bg-no-repeat h-screen bg-cover flex flex-col justify-between pb-11 "
-        }
-        style={{ backgroundImage: `url(${serie?.img})` }}
-      >
-        <Header />
-        {/* <SerieMovieTitle
-            serie={serie?.textos}
-            children={components.movieOrSerie ? "Séries" : "Filmes"}
-          /> */}
-        <Outlet />        
-        {components?.showMovieOrSerie && <SerieMovieTitle
-            serie={serie?.texto}
-            children={components?.movieOrSerie ? "Séries" : "Filmes"}
-          />}
-        <Outlet />
-        
-        <Footer />
-      </div>
-    </div>
+    <div
+    className={
+      " bg-no-repeat h-screen bg-cover flex flex-col justify-between pb-11 "
+    }
+    style={{ backgroundImage: `url(${serie?.img})` }}
+  >
+    <Header />
+    {components?.showMovieOrSerie && <SerieMovieTitle
+        serie={serie?.texto}
+        children={components?.movieOrSerie ? "Séries" : "Filmes"}
+      />}
+    <Outlet />
+    <Footer />
+  </div>
   );
 };
 

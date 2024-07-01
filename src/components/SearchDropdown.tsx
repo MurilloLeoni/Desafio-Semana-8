@@ -7,11 +7,9 @@ type SearchDropdownProps = {
   onSelectOption: (option: OptionType) => void;
 };
 
-const options = ['Tudo', 'Filmes', 'Séries', 'Celebridades'] as const;
-type OptionType = (typeof options)[number];
-
 const OPTIONS = ['multi', 'movie', 'tv', 'person', 'collection'] as const;
 type OptionType = (typeof OPTIONS)[number];
+
 const OPTIONS_PT = ['Tudo', 'Filmes', 'Séries', 'Celebridades', 'Coleções'] as const;
 type OptionPTType = (typeof OPTIONS_PT)[number];
 

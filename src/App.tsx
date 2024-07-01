@@ -21,7 +21,6 @@ import Tvshow from "./components/Tvshow";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Header/> */}
       <Routes>
         <Route path="/" element={<Login />}></Route>
         <Route path="/home/" element={<Main />}>
@@ -37,13 +36,6 @@ function App() {
         <Route path="/search" element={<Search />} />   
         <Route path="/player" element={<VideoPlayer />} />
       </Routes>
-
-      {/* <Routes>
-      <Route path="/loading" element={<Loader/>}></Route>
-    </Routes> */}
-
-      {/* <Route path="" element={<NotFound />}/> */}
-      {/* <Tvshow/> */}
     </BrowserRouter>
   );
 }

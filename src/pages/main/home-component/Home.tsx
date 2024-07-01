@@ -115,7 +115,7 @@ const Home = () => {
             </div>
             <h4 className="h4-heading text-white">Séries em alta</h4>
             <div>
-              <Carrossel  data={serie} redirectCollection={handleSeries} />
+              <Carrossel data={serie} redirectCollection={handleSeries} />
             </div>
             <h4 className="h4-heading text-white">Filmes em alta</h4>
             <div>
