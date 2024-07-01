@@ -6,39 +6,37 @@ import { apiRequest } from "../shared/API/Config/Config";
 import axios from "axios";
 import Carrossel from "../components/Carrossel";
 
-const searchURL = 'https://api.themoviedb.org/3/search/movie'
+const searchURL = 'https://api.themoviedb.org/3/search';
 const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTQzNzk0M2M5YWFhODcxMDhjNmViNzk4OWZkMTg0MCIsIm5iZiI6MTcxOTI2OTM5My4xMTgzNTIsInN1YiI6IjY2NzlmNjliYjUxYzg4MzU5NTNiNDAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.B68cDtxz79f0-7mmzUdbWn9pdXzNw_9T7JvTHVXrF-I';
 
-interface carrossel {
-    id: string;
-    poster_path: string;
-  }
+
+interface MediaItem {
+  id: string;
+  poster_path: string;
+}
 
 const Search = () => {
-    const [searchParams] = useSearchParams();
-    const query = searchParams.get("q");
-    const [carrossel, setCarrossel] = useState<carrossel[]>();
-  
-    useEffect(() => {
-      const getSearchedMovies = async (url: string) => {
-        try {
-          // Configurando a requisição usando apiRequest
-          const requestConfig = apiRequest('GET', url);
-          
-          // Fazendo a requisição usando axios
-          const response = await axios.request(requestConfig);
-          console.log(response.data);
-          setCarrossel(response.data.results)
-        } catch (error) {
-          console.error("Erro ao buscar filmes:", error);
-        }
-      };
-  
-      if (query) {
-        const searchWithQueryURL = `${searchURL}?api_key=${apiKey}&query=${query}`;
-        getSearchedMovies(searchWithQueryURL);
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("q");
+  const type = searchParams.get("type");
+  const [results, setResults] = useState<MediaItem[]>([]);
+
+  useEffect(() => {
+    const getSearchedItems = async (url: string) => {
+      try {
+        const requestConfig = apiRequest('GET', url);
+        const response = await axios.request(requestConfig);
+        setResults(response.data.results);
+      } catch (error) {
+        console.error("Erro ao buscar itens:", error);
       }
-    }, [query]);
+    };
+
+    if (query && type) {
+      const searchWithQueryURL = `${searchURL}/${type.toLowerCase()}?api_key=${apiKey}&query=${query}`;
+      getSearchedItems(searchWithQueryURL);
+    }
+  }, [query, type]);
 
   return (
     <div className="w-screen h-screen flex flex-col bg-neutral-600">
@@ -49,13 +47,13 @@ const Search = () => {
           <span>{query}</span>
         </h2>      
         <div className="mt-6">
-            <div>
-              <Carrossel data={carrossel}/>{" "}
-            </div>
+          <div>
+            <Carrossel data={results} />
+          </div>
         </div>
       </div>
       <div className="mt-28">
-      <Footer />
+        <Footer />
       </div>
     </div>
   );
