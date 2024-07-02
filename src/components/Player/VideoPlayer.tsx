@@ -30,7 +30,7 @@ function VideoPlayer() {
     <div className="video-container overflow-hidden h-screen">
       <div className="rotate-mobile">
         {backgroundVideo && (
-          <div className="iframe-container">
+          <div className="iframe-container md:w-screen ">
             <iframe
               src={`https://www.youtube.com/embed/${backgroundVideo.id}?autoplay=0&mute=0&loop=1&controls=0`}
               allow="autoplay; encrypted-media"

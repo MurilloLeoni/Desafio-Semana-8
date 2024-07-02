@@ -18,6 +18,7 @@ import MovieFilho from "./pages/main/movie-component/MovieFilho";
 import Search from "./pages/Search";
 import VideoPlayer from "./components/Player/VideoPlayer";
 import User_Account from "./pages/User_Account";
+import Tvshow from "./components/Tvshow";
 
 function App() {
   return (
@@ -31,20 +32,15 @@ function App() {
           <Route path="serie" element={<Serie />} />
           <Route path="celebrity" element={<Celebrity />} />
           <Route path="serie/:id" element={<SerieFilho />} />
+          <Route path="serie/:id/:season_number" element={<Tvshow/>} />
           <Route path="collection/:id" element={<Collections/>}/>
           <Route path="movie/:id" element={<MovieFilho/>}/>  
         <Route path="search" element={<Search />} />   
+
         <Route path="mylist" element={<User_Account/>}/>
         </Route>
         <Route path="/player" element={<VideoPlayer />} />
       </Routes>
-
-      {/* <Routes>
-      <Route path="/loading" element={<Loader/>}></Route>
-    </Routes> */}
-
-      {/* <Route path="" element={<NotFound />}/> */}
-      {/* <Tvshow/> */}
     </BrowserRouter>
   );
 }
