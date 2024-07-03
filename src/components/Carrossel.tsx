@@ -22,8 +22,8 @@ interface carrossel {
 const Carrossel = ({ data, redirectCollection }: carrosselType) => {
   function pages(): number | undefined {
     if (data){
-      if (data.length <= 7) {
-        return data?.length;
+      if (data.length < 7) {
+        return 1;
       }
     }
     return 7;
@@ -35,27 +35,14 @@ const Carrossel = ({ data, redirectCollection }: carrosselType) => {
         options={{
           type: "slide",
           direction: "ltr",
-          breakpoints: {
-            640: {
-              perPage: 2,
-            },
-            800: {
-              perPage: 3,
-            },
-            1024: {
-              perPage: 4,
-            },
-            1200: {
-              perPage: 7,
-            },
-          },
+          
           rewind: true,
           rewindByDrag: true,
           arrows: false,
-          pagination: true,
-          perPage: pages(),
+          pagination: false,
           gap: "20px",
           start: 1,
+          autoWidth:true
         }}
       >
         {data?.map((imagem) => (

@@ -8,9 +8,12 @@ interface carrossel {
   id: string;
   poster_path: string;
 }
+interface data {
+  results:carrossel[]
+}
 import useApi from "../../../shared/API/Hooks/useApi";
 const Home = () => {
-  const [serie, setSerie] = useState<carrossel[] | null>(null);
+  // const [serie, setSerie] = useState<carrossel[] | null>(null);
 
   const [Collection, setCollection] = useState<carrossel[] | null>(null);
   const [movie, setMovie] = useState<carrossel[] | null>(null);
@@ -24,17 +27,21 @@ const Home = () => {
     "GET",
     "https://api.themoviedb.org/3/tv/airing_today"
   );
-  useEffect(() => {
-    axios
-      .request(serieOptions)
-      .then(function (response) {
-        // console.log(response.data.results);
-        setSerie(response.data.results);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
+
+  const  serie  = useApi<data | null>(serieOptions);
+  
+  // console.log(serie)
+  // useEffect(() => {
+  //   axios
+  //     .request(serieOptions)
+  //     .then(function (response) {
+  //       // console.log(response.data.results);
+  //       setSerie(response.data.results);
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     });
+  // }, []);
 
   const collectionsOpt = {
     method: "GET",
@@ -115,7 +122,7 @@ const Home = () => {
             </div>
             <h4 className="h4-heading text-white">Séries em alta</h4>
             <div>
-              <Carrossel data={serie} redirectCollection={handleSeries} />
+              <Carrossel data={serie.dados?.results} redirectCollection={handleSeries} />
             </div>
             <h4 className="h4-heading text-white">Filmes em alta</h4>
             <div>
