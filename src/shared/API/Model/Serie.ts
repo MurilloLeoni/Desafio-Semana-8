@@ -24,3 +24,4 @@ interface season {
   vote_average:number
 
 }
+
