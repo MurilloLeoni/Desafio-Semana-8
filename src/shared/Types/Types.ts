@@ -1,7 +1,7 @@
 import serie from "../API/Model/Serie";
 
 export type serieProps = {
-  serie: serie | null | undefined;
+  serie: serie | null;
   children:string
 };
 
