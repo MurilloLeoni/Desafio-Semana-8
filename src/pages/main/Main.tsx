@@ -199,6 +199,23 @@ const Main = () => {
         })
         return;
       }
+      case `/home/mylist`: {
+        setOption(
+          apiRequest(
+            "GET",
+            `https://api.themoviedb.org/3/movie/${SerieID.id}`
+          )
+        );
+        setSerie({
+          texto:dados,
+          img: null,
+        });
+        setComponents({
+          movieOrSerie:false,
+          showMovieOrSerie:false
+        })
+        return;
+      }
     }
   }, [location.pathname, SerieID, dados,]);
 

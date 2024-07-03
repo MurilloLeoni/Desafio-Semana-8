@@ -18,7 +18,7 @@ import MovieFilho from "./pages/main/movie-component/MovieFilho";
 import Search from "./pages/Search";
 import VideoPlayer from "./components/Player/VideoPlayer";
 import User_Account from "./pages/User_Account";
-import Tvshow from "./components/Tvshow";
+import Tvshow from "./pages/main/serie-component/Tvshow";
 
 function App() {
   return (

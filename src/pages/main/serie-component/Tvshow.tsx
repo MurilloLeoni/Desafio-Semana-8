@@ -1,9 +1,8 @@
 import axios from "axios";
-import img from "../assets/img/cover.png";
-import SeasonHeader from "./headers-home/SeasonHeader";
+import SeasonHeader from "../../../components/headers-home/SeasonHeader";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { apiImageUrl } from "../shared/API/Config/Config";
+import { apiImageUrl } from "../../../shared/API/Config/Config";
 
 interface seasonEpsode{
   epsode_number:number;

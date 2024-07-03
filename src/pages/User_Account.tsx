@@ -55,7 +55,7 @@ const User_Account = () => {
   return (
     <div>
 
-    <div className="w-full h-full flex flex-col bg-neutral-600">
+    <div className="w-full flex flex-col justify-center bg-neutral-600">
       
       <div>
         <div className="text-white ml-4 md:ml-24 w-96">

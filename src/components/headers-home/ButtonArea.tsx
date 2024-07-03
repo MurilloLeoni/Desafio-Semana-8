@@ -1,8 +1,7 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ButtonClicked from "../Buttons/ButtonClicked";
-import addFavorite from "../../shared/AddFav";
 type btn ={
-  data:any;
+  data:string|undefined;
   seccondButton:string
   icon:boolean
 }
@@ -21,7 +20,7 @@ const ButtonArea = ({data,seccondButton,icon}:btn) => {
   const navigate = useNavigate()
   const redirect = ()=>{
     if(data){
-      navigate(`/player?title=${data.original_name}&time=${data.number_of_seasons}`)
+      navigate(`/player?title=trailer ${data}`)
     }
   }
 

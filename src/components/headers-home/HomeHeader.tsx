@@ -17,7 +17,7 @@ const HomeHeader = ({ serie }: serieProps) => {
         </span>
         <p className="text-white caption">{serie?.genres[0].name}</p>
         <p className="body-large text-white">{serie?.overview}</p>
-        <ButtonArea data={serie} seccondButton="MAIS INFORMAÇÕES" icon={true} />
+        <ButtonArea data={serie?.original_name} seccondButton="MAIS INFORMAÇÕES" icon={true} />
       </div>
     </div>
   );

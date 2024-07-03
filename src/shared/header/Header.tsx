@@ -8,8 +8,8 @@ import IconSearch from '../../components/icons/IconSearch';
 import IconPlus from '../../components/icons/IconPlus';
 import IconStar from "../../components/icons/IconStar";
 import iconClose from "../../assets/icons/close.svg";
-import UserDropdown from "../../components/UserDropdown";
-import SearchDropdown from "../../components/SearchDropdown";
+import UserDropdown from "../../components/dropDown/UserDropdown";
+import SearchDropdown from "../../components/dropDown/SearchDropdown";
 
 const Header: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState(false);
