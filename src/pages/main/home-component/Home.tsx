@@ -1,5 +1,5 @@
 import Carrossel from "../../../components/Carrossel";
-import { apiRequest } from "../../../shared/API/Config/Config";
+import { apiOptions } from "../../../shared/API/Config/Config";
 import { useNavigate } from "react-router-dom";
 import HomeHeader from "../../../components/headers-home/HomeHeader";
 interface carrossel {
@@ -14,10 +14,10 @@ import serie from "../../../Serie";
 const Home = () => {
   const navigate = useNavigate();
 
-  const headerOpt = apiRequest("GET", `https://api.themoviedb.org/3/tv/94997`);
+  const headerOpt = apiOptions("GET", `https://api.themoviedb.org/3/tv/94997`);
   const homeHeader = useApi<serie|null>(headerOpt);
 
-  const serieOptions = apiRequest(
+  const serieOptions = apiOptions(
     "GET",
     "https://api.themoviedb.org/3/tv/airing_today"
   );
@@ -41,7 +41,7 @@ const Home = () => {
   };
   const  collection  = useApi<data | null>(collectionsOpt);
 
-  const movieOpt = apiRequest(
+  const movieOpt = apiOptions(
     "GET",
     "https://api.themoviedb.org/3/movie/now_playing"
   );

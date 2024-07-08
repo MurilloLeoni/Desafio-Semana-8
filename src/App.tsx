@@ -19,11 +19,9 @@ import Search from "./pages/Search";
 import VideoPlayer from "./components/Player/VideoPlayer";
 import User_Account from "./pages/User_Account";
 import Tvshow from "./pages/main/serie-component/Tvshow";
-
 function App() {
   return (
     <BrowserRouter>
-      {/* <Header/> */}
       <Routes>
         <Route path="/" element={<Login />}></Route>
         <Route path="/home/" element={<Main />}>

@@ -3,7 +3,7 @@ import Header from "../../shared/header/Header";
 // import Celebrity from "./celebrity-component/Celebrity";
 import Footer from "../../shared/footer/Footer";
 import { Navigate, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
-import { apiRequest } from "../../shared/API/Config/Config";
+import { apiOptions } from "../../shared/API/Config/Config";
 
 import serie from "../../shared/API/Model/Serie";
 import useApi from "../../shared/API/Hooks/useApi";
@@ -84,7 +84,7 @@ const Main = () => {
   useEffect(() => {
     switch (location.pathname) {
       case "/home": {
-        setOption(apiRequest("GET", `https://api.themoviedb.org/3/tv/94997`));
+        setOption(apiOptions("GET", `https://api.themoviedb.org/3/tv/94997`));
 
         setSerie({
           texto:dados,
@@ -98,7 +98,7 @@ const Main = () => {
       }
 
       case "/home/serie": {
-        setOption(apiRequest("GET", "https://api.themoviedb.org/3/tv/94954"));
+        setOption(apiOptions("GET", "https://api.themoviedb.org/3/tv/94954"));
 
         setSerie({
           texto:dados,
@@ -113,7 +113,7 @@ const Main = () => {
 
       case "/home/movie": {
         
-        setOption(apiRequest("GET", `https://api.themoviedb.org/3/movie/573435'`));
+        setOption(apiOptions("GET", `https://api.themoviedb.org/3/movie/573435'`));
 
         setSerie({
           texto:dados,
@@ -126,7 +126,7 @@ const Main = () => {
         return;
       }
       case "/home/celebrity": {
-        setOption(apiRequest("GET", `https://api.themoviedb.org/3/tv/235484'`));
+        setOption(apiOptions("GET", `https://api.themoviedb.org/3/tv/235484'`));
         setComponents({
           movieOrSerie:false,
           showMovieOrSerie:false
@@ -139,7 +139,7 @@ const Main = () => {
       }
       case `/home/serie/${SerieID.id}`: {
         setOption(
-          apiRequest("GET", `https://api.themoviedb.org/3/tv/${SerieID.id}`)
+          apiOptions("GET", `https://api.themoviedb.org/3/tv/${SerieID.id}`)
         );
         setComponents({
           movieOrSerie:false,
@@ -153,7 +153,7 @@ const Main = () => {
       }
       case `/home/serie/${SerieID.id}/${SerieID.season_number}`: {
         setOption(
-          apiRequest("GET", `https://api.themoviedb.org/3/tv/${SerieID.id}`)
+          apiOptions("GET", `https://api.themoviedb.org/3/tv/${SerieID.id}`)
         );
         setSerie({
           texto:dados,
@@ -167,7 +167,7 @@ const Main = () => {
       }
       case `/home/collection/${SerieID.id}`: {
         setOption(
-          apiRequest(
+          apiOptions(
             "GET",
             `https://api.themoviedb.org/3/collection/${SerieID.id}`
           )
@@ -184,7 +184,7 @@ const Main = () => {
       }
       case `/home/movie/${SerieID.id}`: {
         setOption(
-          apiRequest(
+          apiOptions(
             "GET",
             `https://api.themoviedb.org/3/movie/${SerieID.id}`
           )
@@ -201,7 +201,7 @@ const Main = () => {
       }
       case `/home/mylist`: {
         setOption(
-          apiRequest(
+          apiOptions(
             "GET",
             `https://api.themoviedb.org/3/movie/${SerieID.id}`
           )
@@ -218,7 +218,6 @@ const Main = () => {
       }
     }
   }, [location.pathname, SerieID, dados,]);
-
   return (
     <div
     className={

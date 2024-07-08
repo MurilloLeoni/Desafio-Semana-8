@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Carrossel from "../../../components/Carrossel"
-import { apiImageUrl, apiRequest } from "../../../shared/API/Config/Config"
+import { apiImageUrl, apiOptions } from "../../../shared/API/Config/Config"
 import axios from "axios"
 import serie from "../../../shared/API/Model/Serie"
 import { useNavigate, useParams } from "react-router-dom"
@@ -17,7 +17,7 @@ const SerieFilho = () => {
   const navigate = useNavigate()
   const [data, setData] = useState<serie>()
   const [carrossel,setCarrossel] = useState<carrossel[]>()
-  const options = apiRequest("GET",`https://api.themoviedb.org/3/tv/${params.id}`)
+  const options = apiOptions("GET",`https://api.themoviedb.org/3/tv/${params.id}`)
 
   const similar = {
     method: 'GET',

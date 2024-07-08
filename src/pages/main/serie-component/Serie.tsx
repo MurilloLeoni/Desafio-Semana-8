@@ -1,6 +1,6 @@
 import axios from "axios";
 import HomeHeader from "../../../components/headers-home/HomeHeader";
-import { apiRequest } from "../../../shared/API/Config/Config";
+import { apiOptions } from "../../../shared/API/Config/Config";
 import useApi from "../../../shared/API/Hooks/useApi";
 import serie from "../../../shared/API/Model/Serie";
 import { useEffect, useState } from "react";
@@ -17,7 +17,7 @@ const [carrossel,setCarrossel] = useState<carrossel[]|undefined>()
   
 
 
-const serieHeader = apiRequest(
+const serieHeader = apiOptions(
     "GET",
     "https://api.themoviedb.org/3/tv/94954"
   );

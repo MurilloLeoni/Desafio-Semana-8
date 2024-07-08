@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { apiRequest } from "../shared/API/Config/Config";
+import { apiOptions } from "../shared/API/Config/Config";
 import axios from "axios";
 import Carrossel from "../components/Carrossel";
 
@@ -24,7 +24,7 @@ const Search = () => {
   useEffect(() => {
     const getSearchedItems = async (url: string) => {
       try {
-        const requestConfig = apiRequest('GET', url);
+        const requestConfig = apiOptions('GET', url);
         const response = await axios.request(requestConfig);
         setResults(response.data.results);
       } catch (error) {

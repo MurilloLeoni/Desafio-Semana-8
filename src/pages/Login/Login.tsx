@@ -1,4 +1,4 @@
-import { apiRequest } from "../../shared/API/Config/Config";
+import { apiOptions } from "../../shared/API/Config/Config";
 import { useState } from "react";
 import axios from "axios";
 import Loader from "../../components/Loader/Loader";
@@ -8,7 +8,7 @@ const Login = () => {
   
 const handleClick = () =>{
   setIsLoading(true);
-  const option = apiRequest("GET","https://api.themoviedb.org/3/authentication/token/new")
+  const option = apiOptions("GET","https://api.themoviedb.org/3/authentication/token/new")
   
   axios
     .request(option)

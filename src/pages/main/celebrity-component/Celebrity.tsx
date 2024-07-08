@@ -1,13 +1,13 @@
 
 import HomeHeader from "../../../components/headers-home/HomeHeader";
-import { apiImageUrl, apiRequest } from "../../../shared/API/Config/Config";
+import { apiImageUrl, apiOptions } from "../../../shared/API/Config/Config";
 import Carrossel from "../../../components/Carrossel";
 import useApi from "../../../shared/API/Hooks/useApi";
 import serie from "../../../Serie";
 import Icelebrity from "../../../shared/API/Model/celebrity"
 import { useNavigate } from "react-router-dom";
 const Celebrity = () => {
-  const headerOpt = apiRequest("GET", `https://api.themoviedb.org/3/tv/235484`);
+  const headerOpt = apiOptions("GET", `https://api.themoviedb.org/3/tv/235484`);
  const headerSerie = useApi<serie|null>(headerOpt)
 const navigate = useNavigate()
   const AtorOpt = {

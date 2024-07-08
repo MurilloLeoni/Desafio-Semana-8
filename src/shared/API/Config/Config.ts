@@ -1,4 +1,6 @@
-export const apiRequest = (method:string, url:string) =>{
+
+export const apiOptions = (method:string, url:string) =>{
+  const key = (import.meta.env.VITE_KEY)
     const options = {
         method: method,
         url: url,
@@ -6,7 +8,7 @@ export const apiRequest = (method:string, url:string) =>{
         headers: {
           accept: "application/json",
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTQzNzk0M2M5YWFhODcxMDhjNmViNzk4OWZkMTg0MCIsIm5iZiI6MTcxOTI2OTM5My4xMTgzNTIsInN1YiI6IjY2NzlmNjliYjUxYzg4MzU5NTNiNDAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.B68cDtxz79f0-7mmzUdbWn9pdXzNw_9T7JvTHVXrF-I",
+            `Bearer ${key}`,
         },
       };
 
@@ -16,7 +18,5 @@ export const apiRequest = (method:string, url:string) =>{
 
 export const apiImageUrl = (imageUrl:string) =>{
 const image = `https://image.tmdb.org/t/p/original${imageUrl}`
-
 return image
-
 }
