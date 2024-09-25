@@ -18,7 +18,6 @@ type movieTipe={
 
 }
 const MovieHeader = ({data,movieCategorie}:movieTipe) => {
-
   return (
     <div>
        <div className=" flex flex-col py-40 px-4 pb-11 image-bg-container">
@@ -31,7 +30,7 @@ const MovieHeader = ({data,movieCategorie}:movieTipe) => {
           </span>
           {data?.runtime} Minutes
         </span>
-        <p className="text-white caption flex flex-row">{data?.genres.map((genre) =>(<div key={genre.id}> <span>{genre.name}</span>, </div>))}</p>
+        <p className="text-white caption flex flex-row">{data?.genres.map((genre) =>(<span key={genre.id}> <span>{genre.name}</span>, </span>))}</p>
         {movieCategorie && <ButtonArea data={data?.original_title} icon={false} seccondButton="TRAILER"/>}
         
         <p className="body-large text-white">{data?.overview}</p>

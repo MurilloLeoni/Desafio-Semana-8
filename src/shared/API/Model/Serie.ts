@@ -7,6 +7,10 @@ export default interface serie {
   genres: Genre[];
   number_of_seasons: number;
   series:season[] 
+  seasons:{
+    id:number,
+    image:string
+  }
 }
  interface Genre {
   id: number;

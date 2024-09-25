@@ -5,7 +5,6 @@ import axios from "axios";
 import Carrossel from "../components/Carrossel";
 
 const searchURL = 'https://api.themoviedb.org/3/search/';
-const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTQzNzk0M2M5YWFhODcxMDhjNmViNzk4OWZkMTg0MCIsIm5iZiI6MTcxOTI2OTM5My4xMTgzNTIsInN1YiI6IjY2NzlmNjliYjUxYzg4MzU5NTNiNDAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.B68cDtxz79f0-7mmzUdbWn9pdXzNw_9T7JvTHVXrF-I';
 
 
 interface MediaItem {
@@ -31,9 +30,10 @@ const Search = () => {
         console.error("Erro ao buscar itens:", error);
       }
     };
+    
 
     if (query && type) {
-      const searchWithQueryURL = `${searchURL}/${type.toLowerCase()}?api_key=${apiKey}&query=${query}`;
+      const searchWithQueryURL = `${searchURL}/${type.toLowerCase()}?api_key=${import.meta.env.VITE_KEY}&query=${query}`;
       getSearchedItems(searchWithQueryURL);
     }
   }, [query, type]);

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Carrossel from '../components/Carrossel';
-import Header from '../shared/header/Header';
 import axios from 'axios';
 
 interface Carrossel {
@@ -26,7 +25,7 @@ const User_Account = () => {
         },
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTQzNzk0M2M5YWFhODcxMDhjNmViNzk4OWZkMTg0MCIsIm5iZiI6MTcxOTI2OTM5My4xMTgzNTIsInN1YiI6IjY2NzlmNjliYjUxYzg4MzU5NTNiNDAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.B68cDtxz79f0-7mmzUdbWn9pdXzNw_9T7JvTHVXrF-I'
+          Authorization: `Bearer ${ import.meta.env.VITE_KEY}`
         }
       });
       stateUpdater(response.data.results);

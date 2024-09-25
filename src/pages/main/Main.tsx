@@ -37,7 +37,7 @@ const Main = () => {
         accept: "application/json",
         "content-type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTQzNzk0M2M5YWFhODcxMDhjNmViNzk4OWZkMTg0MCIsIm5iZiI6MTcxOTYwNjUxMi4wOTc2MjEsInN1YiI6IjY2NzlmNjliYjUxYzg4MzU5NTNiNDAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eiL73ROy94HbKkXvaRV_mLrna-JL8FjT0UyhZZkiYck",
+          `Bearer ${ import.meta.env.VITE_KEY}`,
       },
       data: { request_token: storage },
     };
@@ -57,14 +57,13 @@ const Main = () => {
         url: 'https://api.themoviedb.org/3/authentication/guest_session/new',
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTQzNzk0M2M5YWFhODcxMDhjNmViNzk4OWZkMTg0MCIsIm5iZiI6MTcxOTYwNjUxMi4wOTc2MjEsInN1YiI6IjY2NzlmNjliYjUxYzg4MzU5NTNiNDAxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eiL73ROy94HbKkXvaRV_mLrna-JL8FjT0UyhZZkiYck'
+          Authorization: `Bearer ${ import.meta.env.VITE_KEY}`
         }
       };
       
       axios
         .request(options)
         .then(function (response) {
-          //console.log(response.data);
             window.localStorage.setItem("guestId", response.data.guest_session_id);
         })
         .catch(function (error) {

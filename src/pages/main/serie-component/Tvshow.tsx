@@ -1,8 +1,7 @@
-import axios from "axios";
-import SeasonHeader from "../../../components/headers-home/SeasonHeader";
+import SeasonHeader from "@/components/headers-home/SeasonHeader";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { apiImageUrl } from "../../../shared/API/Config/Config";
+import { apiImageUrl, apiOptions } from "@/shared/API/Config/Config";
+import useApi from "@/shared/API/Hooks/useApi";
 
 interface seasonEpsode{
   epsode_number:number;
@@ -22,38 +21,20 @@ interface season {
 
 const Tvshow = () => {
   const params = useParams()
-  const [season,setSeason] = useState<season>()
-  const epsodesOptions = {
-    method: 'GET',
-    url: `https://api.themoviedb.org/3/tv/${params.id}/season/${params.season_number}`,
-    params: {language: 'en-US'},
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTQzNzk0M2M5YWFhODcxMDhjNmViNzk4OWZkMTg0MCIsIm5iZiI6MTcxOTg1NDQ0Mi42NDEzNiwic3ViIjoiNjY3OWY2OWJiNTFjODgzNTk1M2I0MDE2Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.Xx9HsfPCJQKF1HRn1i8vyAJM6eSqaNUYRw8Ak1sVyPE'
-    }
-  };
-  
-  useEffect(()=>{
-    axios
-    .request(epsodesOptions)
-    .then(function (response) {
-      // console.log(response.data);
-      setSeason(response.data)
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-  },[])
+  // const [season,setSeason] = useState<season>()
 
+  const epsodesOptions = apiOptions("GET", `https://api.themoviedb.org/3/tv/${params.id}/season/${params.season_number}`)   
+  const season  = useApi<season>(epsodesOptions);
+  console.log(season.dados)
   return (
     <div>
-      <SeasonHeader data={season}/>
+      <SeasonHeader data={season.dados}/>
       <div className="bg-neutral-600 pb-11 ">
         <div className="ml-16 pt-2">
           <div>
           <h1 className="h3-heading text-white ">Episódios</h1>
           <div className="grid grid-cols-2 gap-3   md:grid-cols-2  p-2 ">
-            {season?.episodes.map((epsode)=>(
+            {season?.dados?.episodes.map((epsode)=>(
               <button key={epsode.epsode_number} className="bg-opacity-white-10 mr-10 cols rounded-lg flex  mb-4 md:flex-row flex-col">
               <img
                 src={apiImageUrl(epsode?.still_path)}
